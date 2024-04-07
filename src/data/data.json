@@ -1,0 +1,60 @@
+{
+    "Filters": [
+        {
+            "name": "Class",
+            "description": "A class in programming languages serves as a blueprint or template for creating objects, which are instances of that class."
+        },
+        {
+            "name": "Function",
+            "description": "A function in programming is a self-contained block of code that performs a specific task."
+        },
+        {
+            "name": "Variable",
+            "description": "A variable in programming is a named storage location used to hold data that can change during the execution of a program."
+        },
+        {
+            "name": "Conditional",
+            "description": "A conditional in programming is a statement that allows the execution of certain code blocks based on specific conditions."
+        }
+    ],
+    "Playground": {
+        "class": {
+            "description": "A Class is a fundamental concept in object-oriented programming (OOP). It serves as a blueprint or template for creating objects. A class encapsulates data for the object (attributes or properties) and functions (methods) that operate on the data."
+        },
+        "function": {
+            "description": "A function is a self-contained block of code that performs a specific task."
+        }
+    },
+    "Languages": [
+        {
+            "name": "C++"
+        },
+        {
+            "name": "C#"
+        },
+        {
+            "name": "JavaScript"
+        },
+        {
+            "name": "Python"
+        },
+        {
+            "name": "Ruby"
+        },
+        {
+            "name": "Java"
+        },
+        {
+            "name": "Swift"
+        },
+        {
+            "name": "Go"
+        },
+        {
+            "name": "TypeScript"
+        },
+        {
+            "name": "PHP"
+        }
+    ]
+}

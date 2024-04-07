@@ -1,0 +1,21 @@
+.description {
+	margin-top: 30px;
+}
+.section-title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	margin-bottom: 40px;
+}
+.filter-section {
+	background: #f6f6f6;
+	border-bottom: 2px solid black;
+}
+.play-button {
+	width: 150px;
+}
+.play-button:hover {
+	color: #1f386e;
+	background: #fff;
+}
