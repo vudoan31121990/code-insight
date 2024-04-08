@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './playground.scss';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { FilterLanguage } from '../filter-language/FilterLanguage';
 import { CodeSection } from '../code-section/CodeSection';
-import classCodeFormat from '../../data/classCodeSnippet';
+import classLanguageMap from '../../utils/classLanguageMap';
+import functionLanguageMap from '../../utils/functionLanguageMap';
 import json from '../../data/data.json';
 
 export const PlayGround = ({ filter, scrollPosition }) => {
 	const [playGroundFilter, setPlayGroundFilter] = useState(filter);
 	const [selectedItem, setSelectedItem] = useState(null);
 	const [filterCodeSnippet, setFilterCodeSnippet] = useState(null);
-	const [classCodeSnippet, setClassCodeSnippet] = useState(classCodeFormat.cplusplus);
+	const [classCodeSnippet, setClassCodeSnippet] = useState(classLanguageMap.cplusplus);
 	const [functionCodeSnippet, setFunctionCodeSnippet] = useState(null);
 	const [programmingLanguages, setProgrammingLanguages] = useState([]);
 	const [programmingDescription, setProgrammingDescription] = useState('');
@@ -22,14 +23,11 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		handleItemClick('C++');
 		switchProgrammingDescription(playGroundFilter);
 		switchCodeSnippet(filter);
-		console.log(scrollPosition);
-		console.log(scrollRef.current);
 		if (scrollPosition !== null && scrollRef.current !== null) {
 			const targetElement = document.getElementById('playGroundArea');
 			console.log(targetElement);
 			if (targetElement) {
 				targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				console.log('scrolling');
 			}
 		}
 	}, [scrollPosition]);
@@ -58,7 +56,6 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		switch (playGroundFilter) {
 			case 'Class': {
 				switchClassCodeSnippet(item);
-
 				break;
 			}
 			case 'Function':
@@ -69,35 +66,6 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		}
 	};
 
-	const classLanguageMap = {
-		'C++': classCodeFormat.cplusplus,
-		'C#': classCodeFormat.csharp,
-		JavaScript: classCodeFormat.javascript,
-		Python: classCodeFormat.python,
-		Ruby: classCodeFormat.ruby,
-		Java: classCodeFormat.java,
-		Swift: classCodeFormat.swift,
-		Go: classCodeFormat.go,
-		TypeScript: classCodeFormat.typescript,
-		PHP: classCodeFormat.php
-	};
-
-	const functionLanguageMap = {
-		'C++': null,
-		'C#': null,
-		JavaScript: null,
-		Python: null,
-		Ruby: null,
-		Java: null,
-		Swift: null,
-		Go: null,
-		TypeScript: null,
-		PHP: null
-	};
-
-	const switchClassCodeSnippet = (language) => setClassCodeSnippet(classLanguageMap[language]);
-	const switchFunctionCodeSnippet = (language) =>
-		setFunctionCodeSnippet(functionLanguageMap[language]);
 	const switchProgrammingDescription = (filter) => {
 		switch (filter) {
 			case 'Class':
@@ -110,6 +78,10 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 				break;
 		}
 	};
+
+	const switchClassCodeSnippet = (language) => setClassCodeSnippet(classLanguageMap[language]);
+	const switchFunctionCodeSnippet = (language) =>
+		setFunctionCodeSnippet(functionLanguageMap[language]);
 
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
@@ -132,25 +104,11 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 								<div className="col-6 col-sm-2">
 									<p>Language:</p>
 								</div>
-								<div className="col-6 col-sm-2">
-									<Dropdown>
-										<Dropdown.Toggle variant="success" id="dropdown-basic">
-											{selectedItem ? selectedItem : 'Select a language'}
-										</Dropdown.Toggle>
-										<Dropdown.Menu>
-											{programmingLanguages && programmingLanguages.length > 0
-												? programmingLanguages.map((d, i) => (
-														<Dropdown.Item
-															key={`${d.name}-${i}`}
-															onClick={() => handleItemClick(d.name)}
-														>
-															{d.name}
-														</Dropdown.Item>
-													))
-												: null}
-										</Dropdown.Menu>
-									</Dropdown>
-								</div>
+								<FilterLanguage
+									selectedItem={selectedItem}
+									programmingLanguages={programmingLanguages}
+									handleItemClick={handleItemClick}
+								/>
 							</div>
 							{filterCodeSnippet ? (
 								<div className="row playground-code">
