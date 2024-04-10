@@ -7,8 +7,8 @@ import { Filter } from './components/filter/Filter';
 import { PlayGround } from './components/playground/PlayGround';
 
 function App() {
-	const [scrollPosition, setScrollPosition] = useState(null);
 	const [filter, setFilter] = useState('');
+	const [scrollPosition, setScrollPosition] = useState(null);
 
 	useEffect(() => {
 		scrollToId();
@@ -19,8 +19,7 @@ function App() {
 	const scrollToId = () => {
 		const targetElement = document.getElementById('playGroundArea');
 		if (targetElement !== null) {
-			const targetOffsetTop = targetElement.offsetTop;
-			setScrollPosition(targetOffsetTop);
+			setScrollPosition(targetElement.offsetTop);
 		}
 	};
 
@@ -30,7 +29,7 @@ function App() {
 			<Header />
 			<Filter onClick={handleFilterChange} scrollToId={scrollToId} />
 			{filter !== '' ? (
-				<PlayGround id="playGroundArea" filter={filter} scrollPosition={scrollPosition} />
+				<PlayGround filter={filter} scrollPosition={scrollPosition}/>
 			) : null}
 			<Footer />
 		</div>

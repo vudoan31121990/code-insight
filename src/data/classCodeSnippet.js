@@ -1,55 +1,47 @@
 const cplusplus = `class YourClass() {
-    std::cout << \"Hello World\";
+    // Body of the class, including functions and variables
 }`;
 
-const csharp = `public class YourClass {}
-    Console.WriteLine(\"Hello World\");
+const csharp = `public class YourClass {
+    // Body of the class, including functions and variables
 }`;
 
-const javascript = `const YourClass = () => {
-    console.log(\"Hello World\");
-}`;
+const javascript = `class YourClass() {
+    // Body of the class, including functions and variables
+}
+
+const YourClass = () => {
+    // Body of the class, including functions and variables
+} 
+`;
 
 const python = `class YourClass():
-    def __init__(self):
-        print(\"Hello World\")
-}`;
+    # Body of the class, including functions and variables
+`;
 
 const ruby = `class YourClass
-    def initialize
-        puts \"Hello World\"
-    end
+    # Body of the class, including functions and variables
 end`;
 
 const java = `class YourClass {
-    public static void main(String[] args) {
-        System.out.println(\"Hello World\");
-    }
+    // Body of the class, including functions and variables
 }`;
 
 const swift = `class YourClass {
-    func main() {
-        print(\"Hello World\")
-    }
+    // Body of the class, including functions and variables
 }`;
 
-const go = `import "fmt"
-func main() {
-    fmt.Println("Hello World")
-}
-`;
+const go = `type YourObject struct {
+    // Define the fields of your object
+}`;
 
 const typescript = `class YourClass {
-    main() {
-        console.log(\"Hello World\");
-    }
+    // Body of the class, including functions and variables
 }`;
 
 const php = `<?php
     class YourClass {
-        public function main() {
-            echo "Hello World";
-        }
+        // Body of the class, including functions and variables
     }
 ?>`;
 

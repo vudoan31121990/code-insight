@@ -1,14 +1,16 @@
+import functionCodeFormat from '../data/functionCodeSnippet';
+
 const functionLanguageMap = {
-	'C++': null,
-	'C#': null,
-	JavaScript: null,
-	Python: null,
-	Ruby: null,
-	Java: null,
-	Swift: null,
-	Go: null,
-	TypeScript: null,
-	PHP: null
+	'C++': functionCodeFormat.cplusplus,
+	'C#': functionCodeFormat.csharp,
+	JavaScript: functionCodeFormat.javascript,
+	Python: functionCodeFormat.python,
+	Ruby: functionCodeFormat.ruby,
+	Java: functionCodeFormat.java,
+	Swift: functionCodeFormat.swift,
+	Go: functionCodeFormat.go,
+	TypeScript: functionCodeFormat.typescript,
+	PHP: functionCodeFormat.php
 };
 
 export default functionLanguageMap;

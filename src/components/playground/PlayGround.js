@@ -3,31 +3,31 @@ import './playground.scss';
 import { FilterLanguage } from '../filter-language/FilterLanguage';
 import { CodeSection } from '../code-section/CodeSection';
 import classLanguageMap from '../../utils/classLanguageMap';
+import classLanguageMapExp from '../../utils/classLanguageMapExp';
 import functionLanguageMap from '../../utils/functionLanguageMap';
+import functionLanguageMapExp from '../../utils/functionLanguageMapExp';
 import json from '../../data/data.json';
 
 export const PlayGround = ({ filter, scrollPosition }) => {
 	const [playGroundFilter, setPlayGroundFilter] = useState(filter);
-	const [selectedItem, setSelectedItem] = useState(null);
+	const [selectedLanguage, setSelectedLanguage] = useState(null);
 	const [filterCodeSnippet, setFilterCodeSnippet] = useState(null);
-	const [classCodeSnippet, setClassCodeSnippet] = useState(classLanguageMap.cplusplus);
-	const [functionCodeSnippet, setFunctionCodeSnippet] = useState(null);
-	const [programmingLanguages, setProgrammingLanguages] = useState([]);
+	const [programmingLanguagesList, setProgrammingLanguagesList] = useState([]);
 	const [programmingDescription, setProgrammingDescription] = useState('');
+	const [languageExample, setLanguageExample] = useState(null);
 
 	const scrollRef = useRef(null);
 
 	useEffect(() => {
-		setSelectedItem('C++');
-		setProgrammingLanguages(json.Languages);
-		handleItemClick('C++');
+		setSelectedLanguage('C++');
+		setProgrammingLanguagesList(json.Languages);
+		handleLanguageClick('C++');
 		switchProgrammingDescription(playGroundFilter);
 		switchCodeSnippet(filter);
 		if (scrollPosition !== null && scrollRef.current !== null) {
 			const targetElement = document.getElementById('playGroundArea');
-			console.log(targetElement);
 			if (targetElement) {
-				targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				targetElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
 			}
 		}
 	}, [scrollPosition]);
@@ -35,31 +35,34 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	useEffect(() => {
 		setPlayGroundFilter(filter);
 		switchProgrammingDescription(filter);
-		setFilterCodeSnippet(classCodeSnippet);
-	}, [filter, classCodeSnippet]);
+		switchCodeSnippet(filter);
+		handleLanguageClick(selectedLanguage);
+	}, [filter]);
 
 	const switchCodeSnippet = (filter) => {
 		switch (filter) {
 			case 'Class':
-				setFilterCodeSnippet(classCodeSnippet);
+				setFilterCodeSnippet(classLanguageMap['C++']);
 				break;
 			case 'Function':
-				setFilterCodeSnippet(functionCodeSnippet);
+				setFilterCodeSnippet(functionLanguageMap['C++']);
 				break;
 			default:
 				break;
 		}
 	};
 
-	const handleItemClick = (item) => {
-		setSelectedItem(item);
-		switch (playGroundFilter) {
-			case 'Class': {
+	const handleLanguageClick = (item) => {
+		setSelectedLanguage(item);
+		switchCodeSnippet(filter);
+		switch (filter) {
+			case 'Class': 
 				switchClassCodeSnippet(item);
+				switchClassExpCodeSnippet(item);
 				break;
-			}
 			case 'Function':
 				switchFunctionCodeSnippet(item);
+				switchFunctionExpCodeSnippet(item);
 				break;
 			default:
 				break;
@@ -79,40 +82,56 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		}
 	};
 
-	const switchClassCodeSnippet = (language) => setClassCodeSnippet(classLanguageMap[language]);
-	const switchFunctionCodeSnippet = (language) =>
-		setFunctionCodeSnippet(functionLanguageMap[language]);
+	const switchClassCodeSnippet = (language) => setFilterCodeSnippet(classLanguageMap[language]);
+	
+	const switchFunctionCodeSnippet = (language) => {
+		setFilterCodeSnippet(functionLanguageMap[language]);
+	}
+
+	const switchClassExpCodeSnippet = (language) => setLanguageExample(classLanguageMapExp[language]);
+
+	const switchFunctionExpCodeSnippet = (language) => setLanguageExample(functionLanguageMapExp[language]);
 
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
 			<div className="text-center">
-				<div className="container playground-section">
+				<div className="container pg-playground-section">
 					<div className="section-title">
 						<h2>PlayGround</h2>
-						<p className="programming-description">{programmingDescription}</p>
-						<p className="programming-description">
+						<p className="pg-programming-description">{programmingDescription}</p>
+						<p className="pg-programming-description">
 							Based on each language, you should pre-install library and import it
 							before copying the code snippet below to play.
 						</p>
 					</div>
 					<div className="row">
-						<p className="programming-description">
-							Select the language in the dropdown.
+						<p className="pg-programming-description">
+							Select the language in the dropdown to show the format of each language.
 						</p>
-						<div className="playground-box">
-							<div className="row dropdown-language">
+						<div className="pg-playground-box">
+							<div className="row pg-dropdown-language">
 								<div className="col-6 col-sm-2">
 									<p>Language:</p>
 								</div>
 								<FilterLanguage
-									selectedItem={selectedItem}
-									programmingLanguages={programmingLanguages}
-									handleItemClick={handleItemClick}
+									selectedLanguage={selectedLanguage}
+									programmingLanguages={programmingLanguagesList}
+									handleLanguageClick={handleLanguageClick}
 								/>
 							</div>
 							{filterCodeSnippet ? (
-								<div className="row playground-code">
+								<div className="row pg-playground-code">
 									<CodeSection code={filterCodeSnippet} />
+								</div>
+							) : null}
+						</div>
+						<p className="pg-programming-description">
+							Example for the each language. This is the simple code snippet following the format of the code above. It just prints the result without using any computations or logics.
+						</p>
+						<div className="pg-playground-box">
+							{languageExample ? (
+								<div className="row pg-playground-code">
+									<CodeSection code={languageExample} />
 								</div>
 							) : null}
 						</div>
