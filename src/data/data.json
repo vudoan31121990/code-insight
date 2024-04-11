@@ -23,6 +23,9 @@
         },
         "function": {
             "description": "A function is a self-contained block of code that performs a specific task."
+        },
+        "variable": {
+            "description": "A variable is a named storage location used to hold data that can change during the execution of a program."
         }
     },
     "Languages": [

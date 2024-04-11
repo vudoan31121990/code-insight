@@ -6,6 +6,8 @@ import classLanguageMap from '../../utils/classLanguageMap';
 import classLanguageMapExp from '../../utils/classLanguageMapExp';
 import functionLanguageMap from '../../utils/functionLanguageMap';
 import functionLanguageMapExp from '../../utils/functionLanguageMapExp';
+import variableLanguageMap from '../../utils/variableLanguageMap';
+import variableLanguageMapExp from '../../utils/variableLanguageMapExp';
 import json from '../../data/data.json';
 
 export const PlayGround = ({ filter, scrollPosition }) => {
@@ -47,6 +49,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 			case 'Function':
 				setFilterCodeSnippet(functionLanguageMap['C++']);
 				break;
+			case 'Variable':
+				setFilterCodeSnippet(variableLanguageMap['C++']);
+				break;
 			default:
 				break;
 		}
@@ -64,6 +69,10 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 				switchFunctionCodeSnippet(item);
 				switchFunctionExpCodeSnippet(item);
 				break;
+			case 'Variable':
+				switchVariableCodeSnippet(item);
+				switchVariableExpCodeSnippet(item);
+				break;
 			default:
 				break;
 		}
@@ -77,6 +86,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 			case 'Function':
 				setProgrammingDescription(json.Playground.function.description);
 				break;
+			case 'Variable':
+				setProgrammingDescription(json.Playground.variable.description);
+				break;
 			default:
 				break;
 		}
@@ -88,9 +100,13 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		setFilterCodeSnippet(functionLanguageMap[language]);
 	}
 
-	const switchClassExpCodeSnippet = (language) => setLanguageExample(classLanguageMapExp[language]);
+	const switchClassExpCodeSnippet = (language) => setFilterCodeSnippet(classLanguageMapExp[language]);
 
 	const switchFunctionExpCodeSnippet = (language) => setLanguageExample(functionLanguageMapExp[language]);
+
+	const switchVariableCodeSnippet = (language) => setFilterCodeSnippet(variableLanguageMap[language]);
+
+	const switchVariableExpCodeSnippet = (language) => setLanguageExample(variableLanguageMapExp[language]);
 
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
