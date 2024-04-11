@@ -8,8 +8,7 @@ export default function Header(props) {
 				<div className="container intro-text">
 					<div className="col-md-8 col-md-offset-2 overlay">
 						<p>
-							The website is to create for summary of each programming language, and
-							how to code it.
+							The website is to provide concise summaries of various programming languages.
 						</p>
 					</div>
 				</div>

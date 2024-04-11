@@ -68,16 +68,16 @@
 .navbar-default .navbar-toggle:hover > .icon-bar {
 	background-color: #608dfd;
 }
-.section-title {
+.nav-section-title {
 	margin-bottom: 70px;
 }
-.section-title h2 {
+.nav-section-title h2 {
 	position: relative;
 	margin-top: 10px;
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 }
-.section-title h2::after {
+.nav-section-title h2::after {
 	position: absolute;
 	content: '';
 	background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
@@ -87,7 +87,7 @@
 	margin-left: -30px;
 	left: 50%;
 }
-.section-title p {
+.nav-section-title p {
 	font-size: 18px;
 }
 .btn-custom {

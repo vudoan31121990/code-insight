@@ -18,7 +18,7 @@ export const Filter = ({ onClick, scrollToId }) => {
 	return (
 		<div className="text-center filter-section">
 			<div className="container">
-				<div className="section-title">
+				<div className="ft-section-title">
 					<h2>Filters</h2>
 					<p>Please select one of the filter below to get start.</p>
 				</div>

@@ -5,6 +5,7 @@ import Navigation from './components/navigation/Navigation';
 import Footer from './components/footer/Footer';
 import { Filter } from './components/filter/Filter';
 import { PlayGround } from './components/playground/PlayGround';
+import { About } from './components/about/About';
 
 function App() {
 	const [filter, setFilter] = useState('');
@@ -31,6 +32,7 @@ function App() {
 			{filter !== '' ? (
 				<PlayGround filter={filter} scrollPosition={scrollPosition}/>
 			) : null}
+			<About />
 			<Footer />
 		</div>
 	);
