@@ -29,7 +29,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		if (scrollPosition !== null && scrollRef.current !== null) {
 			const targetElement = document.getElementById('playGroundArea');
 			if (targetElement) {
-				targetElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
+				targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			}
 		}
 	}, [scrollPosition]);
@@ -61,7 +61,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		setSelectedLanguage(item);
 		switchCodeSnippet(filter);
 		switch (filter) {
-			case 'Class': 
+			case 'Class':
 				switchClassCodeSnippet(item);
 				switchClassExpCodeSnippet(item);
 				break;
@@ -95,18 +95,22 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	};
 
 	const switchClassCodeSnippet = (language) => setFilterCodeSnippet(classLanguageMap[language]);
-	
+
+	const switchClassExpCodeSnippet = (language) =>
+		setLanguageExample(classLanguageMapExp[language]);
+
 	const switchFunctionCodeSnippet = (language) => {
 		setFilterCodeSnippet(functionLanguageMap[language]);
-	}
+	};
 
-	const switchClassExpCodeSnippet = (language) => setFilterCodeSnippet(classLanguageMapExp[language]);
+	const switchFunctionExpCodeSnippet = (language) =>
+		setLanguageExample(functionLanguageMapExp[language]);
 
-	const switchFunctionExpCodeSnippet = (language) => setLanguageExample(functionLanguageMapExp[language]);
+	const switchVariableCodeSnippet = (language) =>
+		setFilterCodeSnippet(variableLanguageMap[language]);
 
-	const switchVariableCodeSnippet = (language) => setFilterCodeSnippet(variableLanguageMap[language]);
-
-	const switchVariableExpCodeSnippet = (language) => setLanguageExample(variableLanguageMapExp[language]);
+	const switchVariableExpCodeSnippet = (language) =>
+		setLanguageExample(variableLanguageMapExp[language]);
 
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
@@ -142,7 +146,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 							) : null}
 						</div>
 						<p className="pg-programming-description">
-							Example for the each language. This is the simple code snippet following the format of the code above. It just prints the result without using any computations or logics.
+							Example for the each language. This is the simple code snippet following
+							the format of the code above. It just prints the result without using
+							any computations or logics.
 						</p>
 						<div className="pg-playground-box">
 							{languageExample ? (

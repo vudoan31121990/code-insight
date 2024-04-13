@@ -1,6 +1,3 @@
-.description {
-	margin-top: 30px;
-}
 .ft-section-title {
 	display: flex;
 	flex-direction: column;
@@ -15,8 +12,18 @@
 }
 .play-button {
 	width: 150px;
+	margin-bottom: 30px;
 }
 .play-button:hover {
 	color: #1f386e;
 	background: #fff;
+}
+.ft-button-area {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-bottom: 40px;
+	padding-top: 30px;
+}
+.ft-button-active {
+	margin-bottom: -30px;
 }

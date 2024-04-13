@@ -1,28 +1,27 @@
 .ab-section {
-    display: flex;
-    flex-direction: column;
-    padding: 40px 0 60px;
-    background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	padding: 40px 0 60px;
+	background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+	color: rgba(255, 255, 255, 0.75);
+	margin-bottom: 20px;
 }
 .ab-section-title {
-    position: relative;
+	position: relative;
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 }
 .ab-link {
-    color: white;
-    margin-bottom: 15px;
-    text-decoration: none;
+	color: white;
+	margin-bottom: 15px;
+	text-decoration: none;
 }
 .ab-link:hover {
-    text-decoration: underline;
-    color: green
+	text-decoration: underline;
+	color: green;
 }
 .ab-description {
-
 }
 .ab-link-section {
-    padding-left: 200px;
+	padding-left: 200px;
 }

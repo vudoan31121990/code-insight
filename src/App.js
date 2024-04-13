@@ -29,9 +29,7 @@ function App() {
 			<Navigation />
 			<Header />
 			<Filter onClick={handleFilterChange} scrollToId={scrollToId} />
-			{filter !== '' ? (
-				<PlayGround filter={filter} scrollPosition={scrollPosition}/>
-			) : null}
+			{filter !== '' ? <PlayGround filter={filter} scrollPosition={scrollPosition} /> : null}
 			<About />
 			<Footer />
 		</div>
