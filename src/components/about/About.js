@@ -35,7 +35,7 @@ export const About = () => {
 							<a className="ab-link" href="/">
 								About Me
 							</a>
-							<a className="ab-link" href="/">
+							<a className="ab-link" href="/terms-of-use">
 								Terms of Use
 							</a>
 							<a className="ab-link" href="/">
