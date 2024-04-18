@@ -22,7 +22,7 @@ export const Filter = ({ onClick, scrollToId }) => {
 	};
 
 	return (
-		<div className="text-center filter-section">
+		<div id='filters' className="text-center filter-section">
 			<div className="container">
 				<div className="ft-section-title">
 					<h2>Filters</h2>

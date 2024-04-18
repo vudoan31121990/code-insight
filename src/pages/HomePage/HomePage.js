@@ -3,6 +3,7 @@ import { Header } from '../../components/header/Header';
 import { Filter } from '../../components/filter/Filter';
 import { PlayGround } from '../../components/playground/PlayGround';
 import { About } from '../../components/about/About';
+import { Navigation } from '../../components/navigation/Navigation';
 
 export const HomePage = () => {
 	const [filter, setFilter] = useState('');
@@ -23,6 +24,7 @@ export const HomePage = () => {
 
 	return (
 		<div>
+			<Navigation />
 			<Header />
 			<Filter onClick={handleFilterChange} scrollToId={scrollToId} />
 			{filter !== '' ? <PlayGround filter={filter} scrollPosition={scrollPosition} /> : null}
