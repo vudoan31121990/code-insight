@@ -21,7 +21,23 @@
 	color: green;
 }
 .ab-description {
+
 }
-.ab-link-section {
-	padding-left: 20px;
+
+@media screen and (min-width: 1400px) {
+	.ab-link-section {
+		padding-left: 200px
+	}
+}
+
+@media screen and (min-width: 430) and (max-width: 1400px) {
+	.ab-link-section {
+		padding-left: 20px
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.ab-link-section {
+		padding-left: 0px;
+	}
 }
