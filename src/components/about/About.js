@@ -3,7 +3,7 @@ import './about.scss';
 
 export const About = () => {
 	return (
-		<div id='about' className="ab-section">
+		<div id="about" className="ab-section">
 			<div className="container">
 				<div className="row">
 					<div className="col-md-7">
@@ -35,10 +35,10 @@ export const About = () => {
 							<a className="ab-link" href="/">
 								About Me
 							</a>
-							<a className="ab-link" href="/terms-of-use" target='_blank'>
+							<a className="ab-link" href="/terms-of-use" target="_blank">
 								Terms of Use
 							</a>
-							<a className="ab-link" href="/privacy" target='_blank'>
+							<a className="ab-link" href="/privacy" target="_blank">
 								Privacy Policy
 							</a>
 						</div>

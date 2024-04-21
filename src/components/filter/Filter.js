@@ -16,13 +16,13 @@ export const Filter = ({ onClick, scrollToId }) => {
 	};
 
 	return (
-		<div id='filters' className="text-center filter-section">
+		<div id="filters" className="text-center filter-section">
 			<div className="container">
 				<div className="ft-section-title">
 					<h2>Filters</h2>
 					<p>Please select one of the filter below to get start.</p>
 				</div>
-				<FilterDropdown componentLanguages={componentLanguages} onClick={handleOnClick}/>
+				<FilterDropdown componentLanguages={componentLanguages} onClick={handleOnClick} />
 			</div>
 		</div>
 	);
