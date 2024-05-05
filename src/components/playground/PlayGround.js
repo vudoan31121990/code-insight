@@ -9,7 +9,7 @@ import functionLanguageMapExp from '../../utils/functionLanguageMapExp';
 import variableLanguageMap from '../../utils/variableLanguageMap';
 import variableLanguageMapExp from '../../utils/variableLanguageMapExp';
 import json from '../../data/data.json';
-
+import languagesService from '../../services/languageService';
 export const PlayGround = ({ filter, scrollPosition }) => {
 	const [playGroundFilter, setPlayGroundFilter] = useState(filter);
 	const [selectedLanguage, setSelectedLanguage] = useState(null);
@@ -21,8 +21,11 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	const scrollRef = useRef(null);
 
 	useEffect(() => {
+		languagesService().then((data) => setProgrammingLanguagesList(data));
+	}, [])
+
+	useEffect(() => {
 		setSelectedLanguage('C++');
-		setProgrammingLanguagesList(json.Languages);
 		handleLanguageClick('C++');
 		switchProgrammingDescription(playGroundFilter);
 		switchCodeSnippet(filter);

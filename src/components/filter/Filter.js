@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { AwesomeButton } from 'react-awesome-button';
 import './filter.scss';
-import json from '../../data/data.json';
-import { FilterDropdown } from '../filter-dropdown/FilterDropdown';
+import filtersService from '../../services/filterService';
+import 'react-awesome-button/dist/styles.css';
 
 export const Filter = ({ onClick, scrollToId }) => {
 	const [componentLanguages, setComponentLanguages] = useState([]);
+	const [filterActivated, setFilterActivated] = useState(false);
+	const [buttonChosen, setButtonChosen] = useState('');
+	const [buttonType, setButtonType] = useState('primary');
 
 	useEffect(() => {
-		setComponentLanguages(json.Filters);
+		filtersService().then((data) => setComponentLanguages(data))
 	}, []);
 
 	const handleOnClick = (event) => {
-		onClick(event.target.getAttribute('data-value'));
+		onClick(event.target.innerText);
 		scrollToId();
+		setButtonChosen(event.target.innerText);
+		setFilterActivated(true);
+		setButtonType("secondary");
 	};
 
 	return (
@@ -22,7 +29,35 @@ export const Filter = ({ onClick, scrollToId }) => {
 					<h2>Filters</h2>
 					<p>Please select one of the filter below to get start.</p>
 				</div>
-				<FilterDropdown componentLanguages={componentLanguages} onClick={handleOnClick} />
+				<div className="row">
+					{componentLanguages
+						? componentLanguages.map((d, i) => (
+							<div key={`${d.filterName}-${i}`} className="col-xs-6 col-md-3">
+									{filterActivated && buttonChosen === d.filterName ? (
+										<div>
+											<AwesomeButton
+												type={buttonType}
+												size="large"
+												data-value={d.filterName}
+												onPress={handleOnClick}
+											>
+												{d.filterName}
+											</AwesomeButton>
+										</div>
+									) : (
+										<AwesomeButton
+											type="primary"
+											size="large"
+											data-value={d.filterName}
+											onPress={handleOnClick}
+										>
+											{d.filterName}
+										</AwesomeButton>
+									)}
+								</div>
+							))
+						: null}
+				</div>
 			</div>
 		</div>
 	);

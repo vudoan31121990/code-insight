@@ -12,10 +12,10 @@ export const FilterLanguage = ({ selectedLanguage, programmingLanguages, handleL
 					{programmingLanguages && programmingLanguages.length > 0
 						? programmingLanguages.map((d, i) => (
 								<Dropdown.Item
-									key={`${d.name}-${i}`}
-									onClick={() => handleLanguageClick(d.name)}
+									key={`${d.languageName}-${i}`}
+									onClick={() => handleLanguageClick(d.languageName)}
 								>
-									{d.name}
+									{d.languageName}
 								</Dropdown.Item>
 							))
 						: null}

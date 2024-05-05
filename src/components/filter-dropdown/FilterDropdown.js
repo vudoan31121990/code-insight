@@ -19,12 +19,12 @@ export const FilterDropdown = ({ componentLanguages = [], onClick }) => {
 					<DropdownButton size="lg" drop="down-centered" title={title}>
 						{componentLanguages.map((d, i) => (
 							<Dropdown.Item
-								key={`${d.title}-${i}`}
-								eventKey={d.name}
-								data-value={d.name}
+								key={`${d.filterId}-${i}`}
+								eventKey={d.filterName}
+								data-value={d.filterName}
 								onClick={handleOnClick}
 							>
-								{d.name}
+								{d.filterName}
 							</Dropdown.Item>
 						))}
 					</DropdownButton>
