@@ -1,10 +1,6 @@
-const cplusplus = `class YourClass() {
-    // Body of the class, including functions and variables
-}`;
+const cplusplus = `class YourClass() {\n   //Body of the class, including functions and variables\n};`;
 
-const csharp = `public class YourClass {
-    // Body of the class, including functions and variables
-}`;
+const csharp = "public class YourClass {\n   //Body of the class, including functions and variables\n}";
 
 const javascript = `class YourClass() {
     // Body of the class, including functions and variables

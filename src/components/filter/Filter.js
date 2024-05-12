@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { AwesomeButton } from 'react-awesome-button';
 import './filter.scss';
 import filtersService from '../../services/filterService';
 import 'react-awesome-button/dist/styles.css';
-
 export const Filter = ({ onClick, scrollToId }) => {
-	const [componentLanguages, setComponentLanguages] = useState([]);
 	const [filterActivated, setFilterActivated] = useState(false);
 	const [buttonChosen, setButtonChosen] = useState('');
 	const [buttonType, setButtonType] = useState('primary');
+	const dispatch = useDispatch();
+	const { filters } = useSelector((state) => state.filters);
 
 	useEffect(() => {
-		filtersService().then((data) => setComponentLanguages(data))
-	}, []);
+		dispatch(filtersService());
+	}, [dispatch]);
 
 	const handleOnClick = (event) => {
 		onClick(event.target.innerText);
 		scrollToId();
 		setButtonChosen(event.target.innerText);
 		setFilterActivated(true);
-		setButtonType("secondary");
+		setButtonType('secondary');
 	};
 
 	return (
@@ -30,9 +31,9 @@ export const Filter = ({ onClick, scrollToId }) => {
 					<p>Please select one of the filter below to get start.</p>
 				</div>
 				<div className="row">
-					{componentLanguages
-						? componentLanguages.map((d, i) => (
-							<div key={`${d.filterName}-${i}`} className="col-xs-6 col-md-3">
+					{filters
+						? filters.map((d, i) => (
+								<div key={`${d.filterName}-${i}`} className="col-xs-6 col-md-3">
 									{filterActivated && buttonChosen === d.filterName ? (
 										<div>
 											<AwesomeButton

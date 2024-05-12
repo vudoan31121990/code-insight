@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './playground.scss';
 import { FilterLanguage } from '../filter-language/FilterLanguage';
 import { CodeSection } from '../code-section/CodeSection';
@@ -8,21 +9,31 @@ import functionLanguageMap from '../../utils/functionLanguageMap';
 import functionLanguageMapExp from '../../utils/functionLanguageMapExp';
 import variableLanguageMap from '../../utils/variableLanguageMap';
 import variableLanguageMapExp from '../../utils/variableLanguageMapExp';
-import json from '../../data/data.json';
 import languagesService from '../../services/languageService';
+import playgroundsService from '../../services/playgroundService';
+import classSnippetService from '../../services/classSnippetService';
+import classExpService from '../../services/classExpService';
+
 export const PlayGround = ({ filter, scrollPosition }) => {
 	const [playGroundFilter, setPlayGroundFilter] = useState(filter);
 	const [selectedLanguage, setSelectedLanguage] = useState(null);
 	const [filterCodeSnippet, setFilterCodeSnippet] = useState(null);
-	const [programmingLanguagesList, setProgrammingLanguagesList] = useState([]);
 	const [programmingDescription, setProgrammingDescription] = useState('');
 	const [languageExample, setLanguageExample] = useState(null);
 
 	const scrollRef = useRef(null);
+	const dispatch = useDispatch();
+	const { languages } = useSelector((state) => state.languages);
+	const { playgrounds } = useSelector((state) => state.playgrounds);
+	const { classSnippets } = useSelector((state) => state.classSnippets);
+	const { classExpSnippets } = useSelector((state) => state.classExpSnippets);
 
 	useEffect(() => {
-		languagesService().then((data) => setProgrammingLanguagesList(data));
-	}, [])
+		dispatch(languagesService());
+		dispatch(playgroundsService());
+		dispatch(classSnippetService());
+		dispatch(classExpService());
+	}, [dispatch]);
 
 	useEffect(() => {
 		setSelectedLanguage('C++');
@@ -46,9 +57,11 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 
 	const switchCodeSnippet = (filter) => {
 		switch (filter) {
-			case 'Class':
-				setFilterCodeSnippet(classLanguageMap['C++']);
+			case 'Class': {
+				let findSnippet = classSnippets.find((item) => item.codeSnippetId === 'cplusplus');
+				setFilterCodeSnippet(findSnippet ? findSnippet.code : '');
 				break;
+			}
 			case 'Function':
 				setFilterCodeSnippet(functionLanguageMap['C++']);
 				break;
@@ -83,37 +96,57 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 
 	const switchProgrammingDescription = (filter) => {
 		switch (filter) {
-			case 'Class':
-				setProgrammingDescription(json.Playground.class.description);
+			case 'Class': {
+				let findClass = playgrounds.find((item) => item.playgroundId === filter);
+				setProgrammingDescription(findClass.playgroundDesc);
 				break;
-			case 'Function':
-				setProgrammingDescription(json.Playground.function.description);
+			}
+			case 'Function': {
+				let findFunction = playgrounds.find((item) => item.playgroundId === filter);
+				setProgrammingDescription(findFunction.playgroundDesc);
 				break;
-			case 'Variable':
-				setProgrammingDescription(json.Playground.variable.description);
+			}
+			case 'Variable': {
+				let findVariable = playgrounds.find((item) => item.playgroundId === filter);
+				setProgrammingDescription(findVariable.playgroundDesc);
 				break;
+			}
 			default:
 				break;
 		}
 	};
 
-	const switchClassCodeSnippet = (language) => setFilterCodeSnippet(classLanguageMap[language]);
+	const switchClassCodeSnippet = (language) => {
+		let findSnippet = classSnippets.find((item) => item.codeSnippetId === language);
+		if (findSnippet) {
+			setFilterCodeSnippet(findSnippet ? findSnippet.code : '');
+		}
+	};
 
-	const switchClassExpCodeSnippet = (language) =>
+	const switchClassExpCodeSnippet = (language) => {
+		// console.log(classExpSnippets)
+		// let findExp = classExpSnippets.find((item) => item.codeSnippetId === language);
+		// if (findExp) {
+		// 	setLanguageExample(findExp ? findExp.codeExp : '');
+		// }
 		setLanguageExample(classLanguageMapExp[language]);
+	};
 
 	const switchFunctionCodeSnippet = (language) => {
 		setFilterCodeSnippet(functionLanguageMap[language]);
 	};
 
-	const switchFunctionExpCodeSnippet = (language) =>
+	const switchFunctionExpCodeSnippet = (language) => {
 		setLanguageExample(functionLanguageMapExp[language]);
+	};
 
-	const switchVariableCodeSnippet = (language) =>
+	const switchVariableCodeSnippet = (language) => {
 		setFilterCodeSnippet(variableLanguageMap[language]);
+	};
 
-	const switchVariableExpCodeSnippet = (language) =>
+	const switchVariableExpCodeSnippet = (language) => {
 		setLanguageExample(variableLanguageMapExp[language]);
+	};
 
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
@@ -138,7 +171,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 								</div>
 								<FilterLanguage
 									selectedLanguage={selectedLanguage}
-									programmingLanguages={programmingLanguagesList}
+									programmingLanguages={languages}
 									handleLanguageClick={handleLanguageClick}
 								/>
 							</div>
