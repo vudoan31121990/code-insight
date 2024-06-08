@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AwesomeButton } from 'react-awesome-button';
+import { BeatLoader } from 'react-spinners';
 import './filter.scss';
 import filtersService from '../../services/filterService';
 import 'react-awesome-button/dist/styles.css';
+import { ServiceUnavailable } from '../service-unavailable/ServiceUnavailable';
 export const Filter = ({ onClick, scrollToId }) => {
 	const [filterActivated, setFilterActivated] = useState(false);
 	const [buttonChosen, setButtonChosen] = useState('');
 	const [buttonType, setButtonType] = useState('primary');
+
 	const dispatch = useDispatch();
-	const { filters } = useSelector((state) => state.filters);
+	const { filters, isLoading, error } = useSelector((state) => state.filters);
 
 	useEffect(() => {
 		dispatch(filtersService());
@@ -24,42 +27,48 @@ export const Filter = ({ onClick, scrollToId }) => {
 	};
 
 	return (
-		<div id="filters" className="text-center filter-section">
-			<div className="container">
-				<div className="ft-section-title">
-					<h2>Filters</h2>
-					<p>Please select one of the filter below to get start.</p>
+		<div id="filters" className="text-center">
+			{isLoading ? <BeatLoader /> : null}
+			{!isLoading && error ? (
+				<div className="service-unavailable-container">
+					<ServiceUnavailable />
 				</div>
-				<div className="row">
-					{filters
-						? filters.map((d, i) => (
-								<div key={`${d.filterName}-${i}`} className="col-xs-6 col-md-3">
-									{filterActivated && buttonChosen === d.filterName ? (
-										<div>
-											<AwesomeButton
-												type={buttonType}
-												size="large"
-												data-value={d.filterName}
-												onPress={handleOnClick}
-											>
-												{d.filterName}
-											</AwesomeButton>
-										</div>
-									) : (
+			) : null}
+			{!isLoading && filters.length > 0 && !error? (
+				<div className="container filter-section">
+					<div className="ft-section-title">
+						<h2>Filters</h2>
+						<p>Please select one of the filter below to get start.</p>
+					</div>
+					<div className="row">
+						{filters.map((d, i) => (
+							<div key={`${d.filterName}-${i}`} className="col-xs-6 col-md-3">
+								{filterActivated && buttonChosen === d.filterName ? (
+									<div>
 										<AwesomeButton
-											type="primary"
+											type={buttonType}
 											size="large"
 											data-value={d.filterName}
 											onPress={handleOnClick}
 										>
 											{d.filterName}
 										</AwesomeButton>
-									)}
-								</div>
-							))
-						: null}
+									</div>
+								) : (
+									<AwesomeButton
+										type="primary"
+										size="large"
+										data-value={d.filterName}
+										onPress={handleOnClick}
+									>
+										{d.filterName}
+									</AwesomeButton>
+								)}
+							</div>
+						))}
+					</div>
 				</div>
-			</div>
+			) : null}
 		</div>
 	);
 };

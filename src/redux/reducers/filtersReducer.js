@@ -2,7 +2,7 @@ import { GET_FILTERS_FAILURE, GET_FILTERS_SUCCESS } from '../action';
 
 const initialState = {
 	filters: [],
-	loading: false,
+	isLoading: true,
 	error: null
 };
 
@@ -11,14 +11,15 @@ const filtersReducer = (state = initialState, action) => {
 		case GET_FILTERS_SUCCESS:
 			return {
 				...state,
-				loading: false,
-				filters: action.payload
+				isLoading: false,
+				filters: action.payload,
+				error: null
 			};
 		case GET_FILTERS_FAILURE:
 			return {
 				...state,
-				loading: false,
-				error: action.payload
+				isLoading: false,
+				error: action
 			};
 		default:
 			return state;

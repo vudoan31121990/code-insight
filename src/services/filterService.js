@@ -10,7 +10,7 @@ const filtersService = () => {
 			const data = await response.json();
 			dispatch({ type: GET_FILTERS_SUCCESS, payload: data });
 		} catch (error) {
-			dispatch({ type: GET_FILTERS_FAILURE, payload: error });
+			dispatch({ type: GET_FILTERS_FAILURE, error: error });
 		}
 	};
 };

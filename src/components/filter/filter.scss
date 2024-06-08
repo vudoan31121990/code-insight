@@ -7,8 +7,6 @@
 	padding-top: 40px;
 }
 .filter-section {
-	background: #f6f6f6;
-	border-bottom: 2px solid black;
 	padding-bottom: 30px;
 }
 .play-button {
@@ -29,4 +27,15 @@
 }
 .ft-button-active {
 	margin-bottom: -30px;
+}
+.ft-loader {
+	text-align: center;
+}
+.service-unavailable-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	padding-top: 20px;
+	background-color: #FFFF80;
 }
