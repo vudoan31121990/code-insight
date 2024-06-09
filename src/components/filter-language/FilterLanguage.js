@@ -1,12 +1,12 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-
+import PropType from 'prop-types';
 export const FilterLanguage = ({ selectedLanguage, programmingLanguages, handleLanguageClick }) => {
 	return (
 		<div className="col-6 col-sm-2">
 			<Dropdown>
 				<Dropdown.Toggle variant="success" id="dropdown-basic">
-					{selectedLanguage ? selectedLanguage : 'Select a language'}
+					{selectedLanguage || 'Select a language'}
 				</Dropdown.Toggle>
 				<Dropdown.Menu>
 					{programmingLanguages && programmingLanguages.length > 0
@@ -23,4 +23,10 @@ export const FilterLanguage = ({ selectedLanguage, programmingLanguages, handleL
 			</Dropdown>
 		</div>
 	);
+};
+
+FilterLanguage.propTypes = {
+	selectedLanguage: PropType.string,
+	programmingLanguages: PropType.array,
+	handleLanguageClick: PropType.func
 };

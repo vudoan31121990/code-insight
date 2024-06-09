@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropType from 'prop-types';
 import './codeSection.scss';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
@@ -19,4 +20,8 @@ export const CodeSection = ({ code }) => {
 			</div>
 		</div>
 	);
+};
+
+CodeSection.propTypes = {
+	code: PropType.string
 };

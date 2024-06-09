@@ -5,6 +5,7 @@ import { AppRouter } from './router/AppRouter';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
+import '@src/components/i18/i18';
 
 function App() {
 	return (

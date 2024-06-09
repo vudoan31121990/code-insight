@@ -1,0 +1,10 @@
+{
+    "FEATURES": {
+        "NAVIGATION": {
+            "ENABLED": false
+        }
+    },
+    "MOCK_SERVICES_DATA": {
+        "ENABLED": true
+    }    
+}

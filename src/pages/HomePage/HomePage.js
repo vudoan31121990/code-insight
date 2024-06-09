@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Header } from '../../components/header/Header';
-import { Filter } from '../../components/filter/Filter';
-import { PlayGround } from '../../components/playground/PlayGround';
-import { About } from '../../components/about/About';
-import { Navigation } from '../../components/navigation/Navigation';
+import { Header } from '@src/components/header/Header';
+import { Filter } from '@src/components/filter/Filter';
+import { PlayGround } from '@src/components/playground/PlayGround';
+import { About } from '@src/components/about/About';
+import { Navigation } from '@src/components/navigation/Navigation';
 
 export const HomePage = () => {
 	const [filter, setFilter] = useState('');

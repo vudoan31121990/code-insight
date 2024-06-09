@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { AwesomeButton } from 'react-awesome-button';
 import { BeatLoader } from 'react-spinners';
+import { useTranslation } from 'react-i18next';
 import './filter.scss';
-import filtersService from '../../services/filterService';
+import filtersService from '@src/services/filterService';
 import 'react-awesome-button/dist/styles.css';
-import { ServiceUnavailable } from '../service-unavailable/ServiceUnavailable';
+import { ServiceUnavailable } from '@src/components/service-unavailable/ServiceUnavailable';
 export const Filter = ({ onClick, scrollToId }) => {
+	const { t } = useTranslation();
 	const [filterActivated, setFilterActivated] = useState(false);
 	const [buttonChosen, setButtonChosen] = useState('');
 	const [buttonType, setButtonType] = useState('primary');
@@ -37,8 +40,8 @@ export const Filter = ({ onClick, scrollToId }) => {
 			{!isLoading && filters.length > 0 && !error? (
 				<div className="container filter-section">
 					<div className="ft-section-title">
-						<h2>Filters</h2>
-						<p>Please select one of the filter below to get start.</p>
+						<h2>{t('filter.title')}</h2>
+						<p>{t('filter.subtitle')}</p>
 					</div>
 					<div className="row">
 						{filters.map((d, i) => (
@@ -72,3 +75,8 @@ export const Filter = ({ onClick, scrollToId }) => {
 		</div>
 	);
 };
+
+Filter.propTypes = {
+	onClick: PropTypes.func,
+	scrollToId: PropTypes.func
+}

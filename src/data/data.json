@@ -1,63 +1,66 @@
 {
     "Filters": [
         {
-            "name": "Class",
-            "description": "A class in programming languages serves as a blueprint or template for creating objects, which are instances of that class."
+            "filterName": "Class",
+            "filterDesc": "A class in programming languages serves as a blueprint or template for creating objects, which are instances of that class."
         },
         {
-            "name": "Function",
-            "description": "A function in programming is a self-contained block of code that performs a specific task."
+            "filterName": "Function",
+            "filterDesc": "A function in programming is a self-contained block of code that performs a specific task."
         },
         {
-            "name": "Variable",
-            "description": "A variable in programming is a named storage location used to hold data that can change during the execution of a program."
+            "filterName": "Variable",
+            "filterDesc": "A variable in programming is a named storage location used to hold data that can change during the execution of a program."
         },
         {
-            "name": "Conditional",
-            "description": "A conditional in programming is a statement that allows the execution of certain code blocks based on specific conditions."
+            "filterName": "Conditional",
+            "filterDesc": "A conditional in programming is a statement that allows the execution of certain code blocks based on specific conditions."
         }
     ],
-    "Playground": {
-        "class": {
-            "description": "A Class is a fundamental concept in object-oriented programming (OOP). It serves as a blueprint or template for creating objects. A class encapsulates data for the object (attributes or properties) and functions (methods) that operate on the data."
+    "Playgrounds": [
+        {
+            "playgroundId": "Class",
+            "playgroundDesc": "A Class is a fundamental concept in object-oriented programming (OOP). It serves as a blueprint or template for creating objects. A class encapsulates data for the object (attributes or properties) and functions (methods) that operate on the data."
         },
-        "function": {
-            "description": "A function is a self-contained block of code that performs a specific task."
+        {
+            "playgroundId": "Function",
+            "playgroundDesc": "A function is a self-contained block of code that performs a specific task."
         },
-        "variable": {
-            "description": "A variable is a named storage location used to hold data that can change during the execution of a program."
+        {
+            "playgroundId": "Variable",
+            "playgroundDesc": "A variable is a named storage location used to hold data that can change during the execution of a program."
         }
-    },
+    ],
     "Languages": [
         {
-            "name": "C++"
+            "languageName": "C++"
         },
         {
-            "name": "C#"
+            "languageName": "C#"
         },
         {
-            "name": "JavaScript"
+            "languageName": "JavaScript"
         },
         {
-            "name": "Python"
+            "languageName": "Python"
         },
         {
-            "name": "Ruby"
+            "languageName": "Ruby"
         },
         {
-            "name": "Java"
+            "languageName": "Java"
         },
         {
-            "name": "Swift"
+            "languageName": "Swift"
         },
         {
-            "name": "Go"
+            "languageName": "Go"
         },
         {
-            "name": "TypeScript"
+            "languageName": "TypeScript"
         },
         {
-            "name": "PHP"
+            "languageName": "PHP"
         }
     ]
 }

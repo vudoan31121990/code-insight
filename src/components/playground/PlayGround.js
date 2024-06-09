@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 import './playground.scss';
-import { FilterLanguage } from '../filter-language/FilterLanguage';
-import { CodeSection } from '../code-section/CodeSection';
-import classLanguageMap from '../../utils/classLanguageMap';
-import classLanguageMapExp from '../../utils/classLanguageMapExp';
-import functionLanguageMap from '../../utils/functionLanguageMap';
-import functionLanguageMapExp from '../../utils/functionLanguageMapExp';
-import variableLanguageMap from '../../utils/variableLanguageMap';
-import variableLanguageMapExp from '../../utils/variableLanguageMapExp';
-import languagesService from '../../services/languageService';
-import playgroundsService from '../../services/playgroundService';
-import classSnippetService from '../../services/classSnippetService';
-import classExpService from '../../services/classExpService';
-
+import { FilterLanguage } from '@src/components/filter-language/FilterLanguage';
+import { CodeSection } from '@src/components/code-section/CodeSection';
+import classLanguageMap from '@src/utils/classLanguageMap';
+import classLanguageMapExp from '@src/utils/classLanguageMapExp';
+import functionLanguageMap from '@src/utils/functionLanguageMap';
+import functionLanguageMapExp from '@src/utils/functionLanguageMapExp';
+import variableLanguageMap from '@src/utils/variableLanguageMap';
+import variableLanguageMapExp from '@src/utils/variableLanguageMapExp';
+import languagesService from '@src/services/languageService';
+import playgroundsService from '@src/services/playgroundService';
+import classSnippetService from '@src/services/classSnippetService';
+import classExpService from '@src/services/classExpService';
 export const PlayGround = ({ filter, scrollPosition }) => {
+	const { t } = useTranslation();
 	const [playGroundFilter, setPlayGroundFilter] = useState(filter);
 	const [selectedLanguage, setSelectedLanguage] = useState(null);
 	const [filterCodeSnippet, setFilterCodeSnippet] = useState(null);
@@ -124,12 +126,10 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	};
 
 	const switchClassExpCodeSnippet = (language) => {
-		// console.log(classExpSnippets)
-		// let findExp = classExpSnippets.find((item) => item.codeSnippetId === language);
-		// if (findExp) {
-		// 	setLanguageExample(findExp ? findExp.codeExp : '');
-		// }
-		setLanguageExample(classLanguageMapExp[language]);
+		let findExp = classExpSnippets.find((item) => item.codeSnippetId === language);
+		if (findExp) {
+			setLanguageExample(findExp.code);
+		}
 	};
 
 	const switchFunctionCodeSnippet = (language) => {
@@ -153,21 +153,16 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 			<div className="text-center">
 				<div className="container pg-playground-section">
 					<div className="section-title">
-						<h2>PlayGround</h2>
+						<h2>{t('playground.title')}</h2>
 						<p className="pg-programming-description">{programmingDescription}</p>
-						<p className="pg-programming-description">
-							Based on each language, you should pre-install library and import it
-							before copying the code snippet below to play.
-						</p>
+						<p className="pg-programming-description">{t('playground.description1')}</p>
 					</div>
 					<div className="row">
-						<p className="pg-programming-description">
-							Select the language in the dropdown to show the format of each language.
-						</p>
+						<p className="pg-programming-description">{t('playground.description2')}</p>
 						<div className="pg-playground-box">
 							<div className="row pg-dropdown-language">
 								<div className="col-6 col-sm-2">
-									<p>Language:</p>
+									<p>{t('codeSnippet.title')}</p>
 								</div>
 								<FilterLanguage
 									selectedLanguage={selectedLanguage}
@@ -181,11 +176,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 								</div>
 							) : null}
 						</div>
-						<p className="pg-programming-description">
-							Example for the each language. This is the simple code snippet following
-							the format of the code above. It just prints the result without using
-							any computations or logics.
-						</p>
+						<p className="pg-programming-description">{t('playground.description3')}</p>
 						<div className="pg-playground-box">
 							{languageExample ? (
 								<div className="row pg-playground-code">
@@ -199,3 +190,8 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		</div>
 	);
 };
+
+PlayGround.propTypes = {
+	filter: PropTypes.string,
+	scrollPosition: PropTypes.number
+}

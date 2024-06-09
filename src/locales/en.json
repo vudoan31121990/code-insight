@@ -1,0 +1,46 @@
+{
+    "navigation": {
+        "title": "Code Insight",
+        "nav1": {
+            "title": "Filters"
+        },
+        "nav2": {
+            "title": "About"
+        }
+    },
+    "header": {
+        "description": "The website is to provide concise summaries of various programming languages."
+    },
+    "filter": {
+        "title": "Filters",
+        "subtitle": "Please select one of the filter below to get start."
+    },
+    "playground": {
+        "title": "Playground",
+        "description1": "Based on each language, you should pre-install library and import it before copying the code snippet below to play.",
+        "description2": "Select the language in the dropdown to show the format of each language.",
+        "description3": "Example for the each language. This is the simple code snippet following the format of the code above. It just prints the result without using any computations or logics."
+    },
+    "codeSnippet": {
+        "title": "Language"
+    },
+    "about": {
+        "title": "About Code Insight",
+        "description1": "My goal with this website is to provide concise summaries of various programming languages, focusing on key components such as classes, functions, variables and so on.",
+        "description2": "The playground section allows users to explore the structure and syntax of each programming language. It provides the format of each language along with simple example code that users can experiment with.",
+        "description3": "It's important to note that this website does not offer detailed tutorials on how to learn each language. Instead, it serves as a quick reference for understanding the basics of syntax and structure.",
+        "description4": "This website is powered by React.",
+        "links": {
+            "title": "Links",
+            "link1": {
+                "title": "About Me"
+            },
+            "link2": {
+                "title": "Terms of Use"
+            },
+            "link3": {
+                "title": "Privacy Policy"
+            }
+        }
+    }
+}
