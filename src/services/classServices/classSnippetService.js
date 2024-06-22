@@ -1,6 +1,6 @@
-import { GET_CLASS_SNIPPET_SUCCESS, GET_CLASS_SNIPPET_FAILURE } from '../redux/action';
+import { GET_CLASS_SNIPPET_SUCCESS, GET_CLASS_SNIPPET_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
-import { classCodeSnippetData } from '@src/data/classCodeSnippet';
+import { classCodeSnippetData } from '@src/data/classData/classCodeSnippet';
 
 const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 
@@ -24,7 +24,6 @@ const classSnippetService = () => {
 			}
 		};
 	}
-	
 };
 
 export default classSnippetService;

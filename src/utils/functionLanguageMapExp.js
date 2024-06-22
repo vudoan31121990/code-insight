@@ -1,4 +1,4 @@
-import functionCodeFormatExp from '../data/functionCodeSnippetExample';
+import functionCodeFormatExp from '../data/functionData/functionCodeSnippetExample';
 
 const functionLanguageMapExp = {
 	'C++': functionCodeFormatExp.cplusplus,

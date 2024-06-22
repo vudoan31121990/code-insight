@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import './playground.scss';
 import { FilterLanguage } from '@src/components/filter-language/FilterLanguage';
 import { CodeSection } from '@src/components/code-section/CodeSection';
-import classLanguageMap from '@src/utils/classLanguageMap';
-import classLanguageMapExp from '@src/utils/classLanguageMapExp';
-import functionLanguageMap from '@src/utils/functionLanguageMap';
-import functionLanguageMapExp from '@src/utils/functionLanguageMapExp';
-import variableLanguageMap from '@src/utils/variableLanguageMap';
-import variableLanguageMapExp from '@src/utils/variableLanguageMapExp';
 import languagesService from '@src/services/languageService';
 import playgroundsService from '@src/services/playgroundService';
-import classSnippetService from '@src/services/classSnippetService';
-import classExpService from '@src/services/classExpService';
+import classSnippetService from '@src/services/classServices/classSnippetService';
+import classExpService from '@src/services/classServices/classExpService';
+import functionSnippetService from '@src/services/functionServices/functionSnippetService';
+import functionExpService from '@src/services/functionServices/functionExpService';
+import variableSnippetService from '@src/services/variableServices/variableSnippetService';
+import variableExpService from '@src/services/variableServices/variableExpService';
+import { switchDescription, switchCodeSnippetArea } from './PlaygroundUtils';
+
 export const PlayGround = ({ filter, scrollPosition }) => {
 	const { t } = useTranslation();
 	const [playGroundFilter, setPlayGroundFilter] = useState(filter);
@@ -29,16 +29,29 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	const { playgrounds } = useSelector((state) => state.playgrounds);
 	const { classSnippets } = useSelector((state) => state.classSnippets);
 	const { classExpSnippets } = useSelector((state) => state.classExpSnippets);
+	const { functionSnippets } = useSelector((state) => state.functionSnippets);
+	const { functionExpSnippets } = useSelector((state) => state.functionExpSnippets);
+	const { variableSnippets } = useSelector((state) => state.variableSnippets);
+	const { variableExpSnippets } = useSelector((state) => state.variableExpSnippets);
 
+	/** 
+		* Handle fetching all data when the component is mounted.
+	*/
 	useEffect(() => {
 		dispatch(languagesService());
 		dispatch(playgroundsService());
 		dispatch(classSnippetService());
 		dispatch(classExpService());
+		dispatch(functionSnippetService());
+		dispatch(functionExpService());
+		dispatch(variableSnippetService());
+		dispatch(variableExpService());
 	}, [dispatch]);
 
+	/** 
+		* Handle changing the scroll position when the filter button is clicked.
+	*/
 	useEffect(() => {
-		setSelectedLanguage('C++');
 		handleLanguageClick('C++');
 		switchProgrammingDescription(playGroundFilter);
 		switchCodeSnippet(filter);
@@ -50,6 +63,12 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		}
 	}, [scrollPosition]);
 
+	/** 
+		* Handle initializing Playground area when the filter is changed.
+		* It will update the definition of the fulter.
+		* It will initialize the code snippet based on the default language (C++).
+		* It will initialize the code example based on the default language (C++).
+	*/
 	useEffect(() => {
 		setPlayGroundFilter(filter);
 		switchProgrammingDescription(filter);
@@ -57,18 +76,20 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		handleLanguageClick(selectedLanguage);
 	}, [filter]);
 
+	/** 
+		* Handle loading code snippet areas based on default language (C++).
+	*/
 	const switchCodeSnippet = (filter) => {
 		switch (filter) {
 			case 'Class': {
-				let findSnippet = classSnippets.find((item) => item.codeSnippetId === 'cplusplus');
-				setFilterCodeSnippet(findSnippet ? findSnippet.code : '');
+				setFilterCodeSnippet(switchCodeSnippetArea('C++', classSnippets));
 				break;
 			}
 			case 'Function':
-				setFilterCodeSnippet(functionLanguageMap['C++']);
+				setFilterCodeSnippet(switchCodeSnippetArea('C++', functionSnippets));
 				break;
 			case 'Variable':
-				setFilterCodeSnippet(variableLanguageMap['C++']);
+				setFilterCodeSnippet(switchCodeSnippetArea('C++', variableSnippets));
 				break;
 			default:
 				break;
@@ -77,19 +98,18 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 
 	const handleLanguageClick = (item) => {
 		setSelectedLanguage(item);
-		switchCodeSnippet(filter);
 		switch (filter) {
 			case 'Class':
-				switchClassCodeSnippet(item);
-				switchClassExpCodeSnippet(item);
+				setFilterCodeSnippet(switchCodeSnippetArea(item, classSnippets));
+				setLanguageExample(switchCodeSnippetArea(item, classExpSnippets));
 				break;
 			case 'Function':
-				switchFunctionCodeSnippet(item);
-				switchFunctionExpCodeSnippet(item);
+				setFilterCodeSnippet(switchCodeSnippetArea(item, functionSnippets));
+				setLanguageExample(switchCodeSnippetArea(item, functionExpSnippets));
 				break;
 			case 'Variable':
-				switchVariableCodeSnippet(item);
-				switchVariableExpCodeSnippet(item);
+				setFilterCodeSnippet(switchCodeSnippetArea(item, variableSnippets));
+				setLanguageExample(switchCodeSnippetArea(item, variableExpSnippets));
 				break;
 			default:
 				break;
@@ -97,55 +117,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	};
 
 	const switchProgrammingDescription = (filter) => {
-		switch (filter) {
-			case 'Class': {
-				let findClass = playgrounds.find((item) => item.playgroundId === filter);
-				setProgrammingDescription(findClass.playgroundDesc);
-				break;
-			}
-			case 'Function': {
-				let findFunction = playgrounds.find((item) => item.playgroundId === filter);
-				setProgrammingDescription(findFunction.playgroundDesc);
-				break;
-			}
-			case 'Variable': {
-				let findVariable = playgrounds.find((item) => item.playgroundId === filter);
-				setProgrammingDescription(findVariable.playgroundDesc);
-				break;
-			}
-			default:
-				break;
-		}
-	};
-
-	const switchClassCodeSnippet = (language) => {
-		let findSnippet = classSnippets.find((item) => item.codeSnippetId === language);
-		if (findSnippet) {
-			setFilterCodeSnippet(findSnippet ? findSnippet.code : '');
-		}
-	};
-
-	const switchClassExpCodeSnippet = (language) => {
-		let findExp = classExpSnippets.find((item) => item.codeSnippetId === language);
-		if (findExp) {
-			setLanguageExample(findExp.code);
-		}
-	};
-
-	const switchFunctionCodeSnippet = (language) => {
-		setFilterCodeSnippet(functionLanguageMap[language]);
-	};
-
-	const switchFunctionExpCodeSnippet = (language) => {
-		setLanguageExample(functionLanguageMapExp[language]);
-	};
-
-	const switchVariableCodeSnippet = (language) => {
-		setFilterCodeSnippet(variableLanguageMap[language]);
-	};
-
-	const switchVariableExpCodeSnippet = (language) => {
-		setLanguageExample(variableLanguageMapExp[language]);
+		setProgrammingDescription(switchDescription(filter, playgrounds));
 	};
 
 	return (
@@ -194,4 +166,4 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 PlayGround.propTypes = {
 	filter: PropTypes.string,
 	scrollPosition: PropTypes.number
-}
+};

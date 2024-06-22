@@ -24,7 +24,6 @@ const filtersService = () => {
 			}
 		};
 	}
-	
 };
 
 export default filtersService;

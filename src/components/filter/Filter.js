@@ -37,7 +37,7 @@ export const Filter = ({ onClick, scrollToId }) => {
 					<ServiceUnavailable />
 				</div>
 			) : null}
-			{!isLoading && filters.length > 0 && !error? (
+			{!isLoading && filters.length > 0 && !error ? (
 				<div className="container filter-section">
 					<div className="ft-section-title">
 						<h2>{t('filter.title')}</h2>
@@ -79,4 +79,4 @@ export const Filter = ({ onClick, scrollToId }) => {
 Filter.propTypes = {
 	onClick: PropTypes.func,
 	scrollToId: PropTypes.func
-}
+};

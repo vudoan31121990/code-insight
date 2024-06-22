@@ -1,4 +1,4 @@
-import classCodeFormatExp from '../data/classCodeSnippetExample';
+import classCodeFormatExp from '../data/classData/classCodeSnippetExample';
 
 const classLanguageMapExp = {
 	'C++': classCodeFormatExp.cplusplus,

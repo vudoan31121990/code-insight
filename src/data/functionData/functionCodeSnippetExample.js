@@ -72,15 +72,49 @@ const php = `function myNumber($n) {
 
 myNumber(10);`;
 
+const functionCodeExpData = [
+	{
+		codeSnippetId: 'C++',
+		code: cplusplus
+	},
+	{
+		codeSnippetId: 'C#',
+		code: csharp
+	},
+	{
+		codeSnippetId: 'JavaScript',
+		code: javascript
+	},
+	{
+		codeSnippetId: 'Python',
+		code: python
+	},
+	{
+		codeSnippetId: 'Ruby',
+		code: ruby
+	},
+	{
+		codeSnippetId: 'Java',
+		code: java
+	},
+	{
+		codeSnippetId: 'Swift',
+		code: swift
+	},
+	{
+		codeSnippetId: 'Go',
+		code: go
+	},
+	{
+		codeSnippetId: 'TypeScript',
+		code: typescript
+	},
+	{
+		codeSnippetId: 'PHP',
+		code: php
+	}
+];
+
 module.exports = {
-	cplusplus,
-	csharp,
-	javascript,
-	python,
-	ruby,
-	java,
-	swift,
-	go,
-	typescript,
-	php
+	functionCodeExpData
 };
