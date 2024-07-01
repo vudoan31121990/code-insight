@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
 	functionSnippets: functionSnippetReducer,
 	functionExpSnippets: functionExpSnippetReducer,
 	variableSnippets: variableSnippetReducer,
-	variableExpSnippets: variableExpSnippetReducer,
+	variableExpSnippets: variableExpSnippetReducer
 });
 
 export default rootReducer;
