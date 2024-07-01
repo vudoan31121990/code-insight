@@ -34,9 +34,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	const { variableSnippets } = useSelector((state) => state.variableSnippets);
 	const { variableExpSnippets } = useSelector((state) => state.variableExpSnippets);
 
-	/** 
-		* Handle fetching all data when the component is mounted.
-	*/
+	/**
+	 * Handle fetching all data when the component is mounted.
+	 */
 	useEffect(() => {
 		dispatch(languagesService());
 		dispatch(playgroundsService());
@@ -48,9 +48,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		dispatch(variableExpService());
 	}, [dispatch]);
 
-	/** 
-		* Handle changing the scroll position when the filter button is clicked.
-	*/
+	/**
+	 * Handle changing the scroll position when the filter button is clicked.
+	 */
 	useEffect(() => {
 		handleLanguageClick('C++');
 		switchProgrammingDescription(playGroundFilter);
@@ -63,12 +63,12 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		}
 	}, [scrollPosition]);
 
-	/** 
-		* Handle initializing Playground area when the filter is changed.
-		* It will update the definition of the fulter.
-		* It will initialize the code snippet based on the default language (C++).
-		* It will initialize the code example based on the default language (C++).
-	*/
+	/**
+	 * Handle initializing Playground area when the filter is changed.
+	 * It will update the definition of the fulter.
+	 * It will initialize the code snippet based on the default language (C++).
+	 * It will initialize the code example based on the default language (C++).
+	 */
 	useEffect(() => {
 		setPlayGroundFilter(filter);
 		switchProgrammingDescription(filter);
@@ -76,9 +76,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		handleLanguageClick(selectedLanguage);
 	}, [filter]);
 
-	/** 
-		* Handle loading code snippet areas based on default language (C++).
-	*/
+	/**
+	 * Handle loading code snippet areas based on default language (C++).
+	 */
 	const switchCodeSnippet = (filter) => {
 		switch (filter) {
 			case 'Class': {

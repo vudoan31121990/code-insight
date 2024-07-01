@@ -6,15 +6,15 @@
         },
         {
             "filterName": "Function",
-            "filterDesc": "A function in programming is a self-contained block of code that performs a specific task."
+            "filterDesc": "A function in programming languages is a self-contained block of code that performs a specific task that are executed when it is called."
         },
         {
             "filterName": "Variable",
-            "filterDesc": "A variable in programming is a named storage location used to hold data that can change during the execution of a program."
+            "filterDesc": "A variable in programming languages is a named storage location used to hold data that can change during the execution of a program."
         },
         {
             "filterName": "Conditional",
-            "filterDesc": "A conditional in programming is a statement that allows the execution of certain code blocks based on specific conditions."
+            "filterDesc": "A conditional in programming languages is a statement that allows the execution of certain code blocks based on specific conditions."
         }
     ],
     "Playgrounds": [

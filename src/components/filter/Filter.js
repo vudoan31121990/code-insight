@@ -8,6 +8,9 @@ import './filter.scss';
 import filtersService from '@src/services/filterService';
 import 'react-awesome-button/dist/styles.css';
 import { ServiceUnavailable } from '@src/components/service-unavailable/ServiceUnavailable';
+import { CardFilterButton } from '@src/components/card/Card';
+import { CarouselFillter } from '@src/components/carousel/Carousel';
+
 export const Filter = ({ onClick, scrollToId }) => {
 	const { t } = useTranslation();
 	const [filterActivated, setFilterActivated] = useState(false);
@@ -22,57 +25,32 @@ export const Filter = ({ onClick, scrollToId }) => {
 	}, [dispatch]);
 
 	const handleOnClick = (event) => {
-		onClick(event.target.innerText);
+		onClick(event);
 		scrollToId();
-		setButtonChosen(event.target.innerText);
+		setButtonChosen(event);
 		setFilterActivated(true);
 		setButtonType('secondary');
 	};
 
 	return (
-		<div id="filters" className="text-center">
-			{isLoading ? <BeatLoader /> : null}
-			{!isLoading && error ? (
-				<div className="service-unavailable-container">
-					<ServiceUnavailable />
-				</div>
-			) : null}
-			{!isLoading && filters.length > 0 && !error ? (
-				<div className="container filter-section">
-					<div className="ft-section-title">
-						<h2>{t('filter.title')}</h2>
-						<p>{t('filter.subtitle')}</p>
+		<section className="section pt-lg-0 mt--100">
+			<div id="filters" className="text-center ">
+				{isLoading ? <BeatLoader /> : null}
+				{!isLoading && error ? (
+					<div className="service-unavailable-container">
+						<ServiceUnavailable />
 					</div>
-					<div className="row">
-						{filters.map((d, i) => (
-							<div key={`${d.filterName}-${i}`} className="col-xs-6 col-md-3">
-								{filterActivated && buttonChosen === d.filterName ? (
-									<div>
-										<AwesomeButton
-											type={buttonType}
-											size="large"
-											data-value={d.filterName}
-											onPress={handleOnClick}
-										>
-											{d.filterName}
-										</AwesomeButton>
-									</div>
-								) : (
-									<AwesomeButton
-										type="primary"
-										size="large"
-										data-value={d.filterName}
-										onPress={handleOnClick}
-									>
-										{d.filterName}
-									</AwesomeButton>
-								)}
-							</div>
-						))}
+				) : null}
+				{!isLoading && filters.length > 0 && !error ? (
+					<div className="container filter-section">
+						
+						<div className="row">
+							<CarouselFillter items={filters} handleOnClick={handleOnClick} />
+						</div>
 					</div>
-				</div>
-			) : null}
-		</div>
+				) : null}
+			</div>
+		</section>
 	);
 };
 

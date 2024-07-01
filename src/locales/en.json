@@ -9,7 +9,7 @@
         }
     },
     "header": {
-        "description": "The website is to provide concise summaries of various programming languages."
+        "description": "The website is to provide concise summaries of various syntax and structure of various programming languages."
     },
     "filter": {
         "title": "Filters",
