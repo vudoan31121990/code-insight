@@ -13,8 +13,20 @@
             "filterDesc": "A variable in programming languages is a named storage location used to hold data that can change during the execution of a program."
         },
         {
-            "filterName": "Conditional",
-            "filterDesc": "A conditional in programming languages is a statement that allows the execution of certain code blocks based on specific conditions."
+            "filterName": "If-else Conditional",
+            "filterDesc": "An if-else conditional in programming languages is a control flow statement based on whether a condition is true or false."
+        },
+        {
+            "filterName": "Switch Case Conditional",
+            "filterDesc": "A switch-case conditional in programming languages is a control flow statement based on the value of a variable."
+        },
+        {
+            "filterName": "For Loop",
+            "filterDesc": "A loop in programming languages is a control flow statement that allows to execute a block of code multiple times."
+        },
+        {
+            "filterName": "While Loop",
+            "filterDesc": "A while loop in programming languages is a control flow statement that allows to execute a code block while checking a condition."
         }
     ],
     "Playgrounds": [
@@ -29,6 +41,22 @@
         {
             "playgroundId": "Variable",
             "playgroundDesc": "A variable is a named storage location used to hold data that can change during the execution of a program."
+        },
+        {
+            "playgroundId": "If-else Conditional",
+            "playgroundDesc": "An if-else conditional in programming languages is a control flow statement that allows you to execute different code blocks based on whether a condition is true or false."
+        },
+        {
+            "playgroundId": "Switch Case Conditional",
+            "playgroundDesc": "A switch-case conditional in programming languages is a control flow statement that allows a variable to be tested against a list of values, each with an associated block of code to execute."
+        },
+        {
+            "playgroundId": "For Loop",
+            "playgroundDesc": "A loop in programming languages is a control flow statement used to repeatedly execute a block of code a certain number of times or over a sequence of values."
+        },
+        {
+            "playgroundId": "While Loop",
+            "playgroundDesc": "A while loop in programming languages is is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition"
         }
     ],
     "Languages": [
