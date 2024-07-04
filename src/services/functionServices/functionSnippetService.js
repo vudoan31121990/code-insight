@@ -13,7 +13,7 @@ const functionSnippetService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(process.env.REACT_APP_CLASS_SNIPPET_API);
+				const response = await fetch(process.env.REACT_APP_FUNCTION_SNIPPET_API);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

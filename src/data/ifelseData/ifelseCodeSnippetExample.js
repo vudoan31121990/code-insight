@@ -24,26 +24,36 @@ class Program {
     }
 }`;
 
-const javascript = `let number = 18;
-if (number % 2 == 0) {
-    console.log("The number is even.");
-} else {
-    console.log("The number is odd.");
-}`;
+const javascript = `function isEvenOrOdd(number) {
+    if (number % 2 == 0) {
+        console.log("The number is even.");
+    } else {
+        console.log("The number is odd.");
+    }
+}
 
-const python = `number = 18
-if number % 2 == 0:
-    print("The number is even.")
-else:
-    print("The number is odd.")
+isEvenOrOdd(10);
 `;
 
-const ruby = `number = 18
-if number % 2 == 0
-  puts "The number is even."
-else
-  puts "The number is odd."
-end`;
+const python = `def is_even_or_odd(number):
+    if number % 2 == 0:
+        print("The number is even.")
+    else:
+        print("The number is odd.")
+
+is_even_or_odd(10)
+`;
+
+const ruby = `def is_even_or_odd(number)
+    if number % 2 == 0
+        puts "The number is even."
+    else
+        puts "The number is odd."
+    end
+end
+
+is_even_or_odd(10)
+`;
 
 const java = `public class Main {
     public static void main(String[] args) {
@@ -56,12 +66,15 @@ const java = `public class Main {
     }
 }`;
 
-const swift = `let number = 18
-if number % 2 == 0 {
-    print("The number is even.")
-} else {
-    print("The number is odd.")
-}`;
+const swift = `func isEvenOrOdd(number: Int) {
+    if number % 2 == 0 {
+        print("The number is even.")
+    } else {
+        print("The number is odd.")
+    }
+}
+
+isEvenOrOdd(number: 10)`;
 
 const go = `package main
 
@@ -76,21 +89,26 @@ func main() {
     }
 }`;
 
-const typescript = `let num: number = 18;
-if (num % 2 == 0) {
-    console.log("The number is even.");
-} else {
-    console.log("The number is odd.");
-}`;
-
-const php = `<?php
-$number = 18;
-if ($number % 2 == 0) {
-    echo "The number is even.";
-} else {
-    echo "The number is odd.";
+const typescript = `function isEvenOrOdd(number: number) {
+    if (number % 2 == 0) {
+        console.log("The number is even.");
+    } else {
+        console.log("The number is odd.");
+    }
 }
-?>`;
+
+isEvenOrOdd(10);`;
+
+const php = `function isEvenOrOdd($number) {
+    if ($number % 2 == 0) {
+        echo "The number is even.";
+    } else {
+        echo "The number is odd.";
+    }
+}
+
+isEvenOrOdd(10);
+`;
 
 const ifelseCodeExpData = [
 	{

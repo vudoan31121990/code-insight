@@ -6,22 +6,7 @@
  */
 const switchDescription = (filter, playgrounds) => {
 	let findPlaygroundDesc = '';
-	switch (filter) {
-		case 'Class': {
-			findPlaygroundDesc = playgrounds.find((item) => item.playgroundId === filter);
-			break;
-		}
-		case 'Function': {
-			findPlaygroundDesc = playgrounds.find((item) => item.playgroundId === filter);
-			break;
-		}
-		case 'Variable': {
-			findPlaygroundDesc = playgrounds.find((item) => item.playgroundId === filter);
-			break;
-		}
-		default:
-			break;
-	}
+	findPlaygroundDesc = playgrounds.find((item) => item.playgroundId === filter);
 	return findPlaygroundDesc.playgroundDesc;
 };
 

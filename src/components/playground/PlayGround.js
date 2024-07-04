@@ -13,6 +13,14 @@ import functionSnippetService from '@src/services/functionServices/functionSnipp
 import functionExpService from '@src/services/functionServices/functionExpService';
 import variableSnippetService from '@src/services/variableServices/variableSnippetService';
 import variableExpService from '@src/services/variableServices/variableExpService';
+import ifelseSnippetService from '@src/services/ifelseServices/ifelseSnippetService';
+import ifelseExpService from '@src/services/ifelseServices/ifelseExpService';
+import switchSnippetService from '@src/services/switchServices/switchSnippetService';
+import switchExpService from '@src/services/switchServices/switchExpService';
+import forSnippetService from '@src/services/forServices/forSnippetService';
+import forExpService from '@src/services/forServices/forExpService';
+import whileSnippetService from '@src/services/whileServices/whileSnippetService';
+import whileExpService from '@src/services/whileServices/whileExpService';
 import { switchDescription, switchCodeSnippetArea } from './PlaygroundUtils';
 
 export const PlayGround = ({ filter, scrollPosition }) => {
@@ -33,6 +41,14 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	const { functionExpSnippets } = useSelector((state) => state.functionExpSnippets);
 	const { variableSnippets } = useSelector((state) => state.variableSnippets);
 	const { variableExpSnippets } = useSelector((state) => state.variableExpSnippets);
+	const { ifelseSnippets } = useSelector((state) => state.ifelseSnippets);
+	const { ifelseExpSnippets } = useSelector((state) => state.ifelseExpSnippets);
+	const { switchSnippets } = useSelector((state) => state.switchSnippets);
+	const { switchExpSnippets } = useSelector((state) => state.switchExpSnippets);
+	const { forSnippets } = useSelector((state) => state.forSnippets);
+	const { forExpSnippets } = useSelector((state) => state.forExpSnippets);
+	const { whileSnippets } = useSelector((state) => state.whileSnippets);
+	const { whileExpSnippets } = useSelector((state) => state.whileExpSnippets);
 
 	/**
 	 * Handle fetching all data when the component is mounted.
@@ -46,6 +62,14 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		dispatch(functionExpService());
 		dispatch(variableSnippetService());
 		dispatch(variableExpService());
+		dispatch(ifelseSnippetService());
+		dispatch(ifelseExpService());
+		dispatch(switchSnippetService());
+		dispatch(switchExpService());
+		dispatch(forSnippetService());
+		dispatch(forExpService());
+		dispatch(whileSnippetService());
+		dispatch(whileExpService());
 	}, [dispatch]);
 
 	/**
@@ -91,6 +115,18 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 			case 'Variable':
 				setFilterCodeSnippet(switchCodeSnippetArea('C++', variableSnippets));
 				break;
+			case 'If-Else Conditional':
+				setFilterCodeSnippet(switchCodeSnippetArea('C++', ifelseSnippets));
+				break;
+			case 'Switch Case Conditional':
+				setFilterCodeSnippet(switchCodeSnippetArea('C++', switchSnippets));
+				break;
+			case 'For Loop':
+				setFilterCodeSnippet(switchCodeSnippetArea('C++', forSnippets));
+				break;
+			case 'While Loop':
+				setFilterCodeSnippet(switchCodeSnippetArea('C++', whileSnippets));
+				break;
 			default:
 				break;
 		}
@@ -110,6 +146,22 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 			case 'Variable':
 				setFilterCodeSnippet(switchCodeSnippetArea(item, variableSnippets));
 				setLanguageExample(switchCodeSnippetArea(item, variableExpSnippets));
+				break;
+			case 'If-Else Conditional':
+				setFilterCodeSnippet(switchCodeSnippetArea(item, ifelseSnippets));
+				setLanguageExample(switchCodeSnippetArea(item, ifelseExpSnippets));
+				break;
+			case 'Switch Case Conditional':
+				setFilterCodeSnippet(switchCodeSnippetArea(item, switchSnippets));
+				setLanguageExample(switchCodeSnippetArea(item, switchExpSnippets));
+				break;
+			case 'For Loop':
+				setFilterCodeSnippet(switchCodeSnippetArea(item, forSnippets));
+				setLanguageExample(switchCodeSnippetArea(item, forExpSnippets));
+				break;
+			case 'While Loop':
+				setFilterCodeSnippet(switchCodeSnippetArea(item, whileSnippets));
+				setLanguageExample(switchCodeSnippetArea(item, whileExpSnippets));
 				break;
 			default:
 				break;

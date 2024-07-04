@@ -1,19 +1,19 @@
 import { GET_VARIABLE_SNIPPET_SUCCESS, GET_VARIABLE_SNIPPET_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
-import { functionCodeData } from '@src/data/functionData/functionCodeSnippet';
+import { variableCodeData } from '@src/data/variableData/variableCodeSnippet';
 
 const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 
 const variableSnippetService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = functionCodeData;
+			const data = variableCodeData;
 			dispatch({ type: GET_VARIABLE_SNIPPET_SUCCESS, payload: data });
 		};
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(process.env.REACT_APP_CLASS_SNIPPET_API);
+				const response = await fetch(process.env.REACT_APP_VARIABLE_SNIPPET_API);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

@@ -1,4 +1,4 @@
-import { GET_VARIABLE_EXP_SUCCESS, GET_VARIABLE_EXP_FAILURE } from '../../action';
+import { GET_VARIABLE_SNIPPET_SUCCESS, GET_VARIABLE_SNIPPET_FAILURE } from '../../action';
 
 const initialState = {
 	variableSnippets: [],
@@ -8,13 +8,13 @@ const initialState = {
 
 const variableSnippetReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GET_VARIABLE_EXP_SUCCESS:
+		case GET_VARIABLE_SNIPPET_SUCCESS:
 			return {
 				...state,
-				classSnippets: action.payload,
+				variableSnippets: action.payload,
 				loading: false
 			};
-		case GET_VARIABLE_EXP_FAILURE:
+		case GET_VARIABLE_SNIPPET_FAILURE:
 			return {
 				...state,
 				loading: false,

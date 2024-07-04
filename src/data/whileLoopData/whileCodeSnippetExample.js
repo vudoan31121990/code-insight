@@ -24,24 +24,34 @@ class Program {
 }
 `;
 
-const javascript = `let i = 0;
-while (i < 10) {
-    console.log(i);
-    i++;
+const javascript = `function myWhileLoop() {
+	let i = 0;
+	while (i < 10) {
+		console.log(i);
+		i++;
+	}
 }
+
+myWhileLoop();`;
+
+const python = `func my_while_loop():
+	i = 0
+	while i < 10:
+		print(i, end=" ")
+		i += 1
+
+my_while_loop()
 `;
 
-const python = `i = 0
-while i < 10:
-    print(i, end=" ")
-    i += 1
-`;
-
-const ruby = `i = 0
-while i < 10 do
-  puts i
-  i += 1
+const ruby = `function my_while_loop
+  i = 0
+  while i < 10
+	puts i
+	i += 1
+  end
 end
+
+my_while_loop
 `;
 
 const java = `public class Main {
@@ -55,11 +65,15 @@ const java = `public class Main {
 }
 `;
 
-const swift = `var i = 0
-while i < 10 {
-    print(i)
-    i += 1
+const swift = `func myWhileLoop() {
+	var i = 0
+	while i < 10 {
+		print(i)
+		i += 1
+	}
 }
+
+myWhileLoop()
 `;
 
 const go = `package main
@@ -75,20 +89,26 @@ func main() {
 }
 `;
 
-const typescript = `let i: number = 0;
-while (i < 10) {
-    console.log(i);
-    i++;
+const typescript = `function myWhileLoop() {
+	let i = 0;
+	while (i < 10) {
+		console.log(i);
+		i++;
+	}
 }
+
+myWhileLoop();
 `;
 
-const php = `<?php
-$i = 0;
-while ($i < 10) {
-    echo $i . " ";
-    $i++;
+const php = `function myWhileLoop() {
+	$i = 0;
+	while ($i < 10) {
+		echo $i . " ";
+		$i++;
+	}
 }
-?>
+
+myWhileLoop();
 `;
 
 const whileLoopCodeExpData = [

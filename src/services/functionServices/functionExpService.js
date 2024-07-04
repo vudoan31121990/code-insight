@@ -13,7 +13,7 @@ const functionExpService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(process.env.REACT_APP_CLASS_EXP_API);
+				const response = await fetch(process.env.REACT_APP_FUNCTION_EXP_API);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

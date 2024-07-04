@@ -1,76 +1,173 @@
 const cplusplus = `#include <iostream>
 
-void myNumber(int n) {
-    std::cout << "My number is: " << n;
-}
-
 int main() {
-    MyNumber(10);
+    // Declaring and initializing variables
+	std::string name = "Alice";
+	int age = 30;
+	float height = 5.7f;
+	bool isStudent = true;
+
+	// Printing variables
+	std::cout << "Name: " << name << std::endl;
+	std::cout << "Age: " << age << std::endl;
+	std::cout << "Height: " << height << std::endl;
+	std::cout << "Is student: " << (isStudent ? "Yes" : "No") << std::endl;
+	return 0;
 }`;
 
-const csharp = `public void myNumber(int n) {
-    Console.WriteLine("My number is: " + n);
-}
+const csharp = `using System;
 
 int main() {
-    myNumber(10);
+    // Declaring and initializing variables
+	string name = "Alice";
+	int age = 30;
+	double height = 5.7;
+	bool isStudent = true;
+
+	// Printing variables
+	Console.WriteLine("Name: " + name);
+	Console.WriteLine("Age: " + age);
+	Console.WriteLine("Height: " + height);
+	Console.WriteLine("Is student: " + (isStudent ? "Yes" : "No"));
+	return 0;
 }`;
 
-const javascript = `function myNumber(int n) {
-    console.log("My number is: " + n);
+const javascript = `function myVariable() {
+	// Declaring and initializing variables
+	let name = "Alice";
+	let age = 30;
+	let height = 5.7;
+	let isStudent = true;
+
+	// Printing variables
+	console.log("Name: " + name);
+	console.log("Age: " + age);
+	console.log("Height: " + height);
+	console.log("Is student: " + (isStudent ? "Yes" : "No"));
 }
 
-myNumber(10);`;
+myVariable();`;
 
-const python = `def my_number(a):
-    print("My number is: " + a)
+const python = `def my_variable():
+	# Declaring and initializing variables
+	name = "Alice"
+	age = 30
+	height = 5.7
+	is_student = True
 
-my_number(10)`;
+	# Printing variables
+	print("Name: " + name)
+	print("Age: " + age)
+	print("Height: " + height)
+	print("Is student: " + (is_student ? "Yes" : "No"))
 
-const ruby = `def my_number(n)
-    puts "My number is: #{n}"
+my_variable()`;
+
+const ruby = `def my_variable()
+    # Declaring and initializing variables
+	name = "Alice"
+	age = 30
+	height = 5.7
+	is_student = true
+
+	# Printing variables
+	puts("Name: " + name)
+	puts("Age: " + age)
+	puts("Height: " + height)
+	puts("Is student: " + (is_student ? "Yes" : "No"))
 end
 
-my_number(10)`;
+my_variable()`;
 
-const java = `public void myNumber(int n) {
-    System.out.println("My number is: " + n);
+const java = `public void myVariable() {
+    // Declaring and initializing variables
+	String name = "Alice";
+	int age = 30;
+	double height = 5.7;
+	boolean isStudent = true;
+
+	// Printing variables
+	System.out.println("Name: " + name);	
+	System.out.println("Age: " + age);
+	System.out.println("Height: " + height);
+	System.out.println("Is student: " + (isStudent ? "Yes" : "No"));
 }
 
 public static void main(String[] args) {
-    myNumber(10);
+    myVariable();
 }`;
 
-const swift = `func myNumber(_ n: Int) -> void {
-    print("My number is: " + n)
+const swift = `func myVariable() -> void {
+    // Declaring and initializing variables
+	var name: String = "Alice"
+	var age: Int = 30
+	var height: Double = 5.7
+	var isStudent: Bool = true
+
+	// Printing variables
+	print("Name: " + name)
+	print("Age: " + age)
+	print("Height: " + height)
+	print("Is student: " + (isStudent ? "Yes" : "No"))
 }
 
-myNumber(10)`;
+myVariable()`;
 
-const go = `
-package main
+const go = `package main
 
 import "fmt"
 
-func myNumber(n int) void {
-    fmt.Println("My number is: " + n)
+func myVariable() void {
+    // Declaring and initializing variables
+	var name string = "Alice"
+	var age int = 30
+	var height float64 = 5.7
+	var isStudent bool = true
+
+	// Printing variables
+	fmt.Println("Name: " + name)
+	fmt.Println("Age: " + age)
+	fmt.Println("Height: " + height)
+	fmt.Println("Is student: " + (isStudent ? "Yes" : "No"))
 }
 
 func main() {
-    myNumber(10)
+    myVariable()
 }`;
 
-const typescript = `function myNumber(n: number): void {
-    console.log("My number is: " + n);
+const typescript = `function myVariable(): void {
+    // Declaring and initializing variables
+	let name: string = "Alice";
+	let age: number = 30;
+	let height: number = 5.7;
+	let isStudent: boolean = true;
+
+	// Printing variables
+	console.log("Name: " + name);
+	console.log("Age: " + age);
+	console.log("Height: " + height);
+	console.log("Is student: " + (isStudent ? "Yes" : "No"));
 }
 
-myNumber(10);`;
+myVariable();`;
 
-const php = `function myNumber($n) {
-    echo "My number is: " . $n;
+const php = `function myNumber() {
+    <?php
+	// Declaring and initializing variables
+	$name = "Alice";
+	$age = 30;
+	$height = 5.7;
+	$is_student = true;
+
+	// Printing variables
+	echo "Name: " . $name;
+	echo "Age: " . $age;
+	echo "Height: " . $height;
+	echo "Is student: " . ($is_student ? "Yes" : "No");
+	?>
 }
 
-myNumber(10);`;
+myNumber();`;
 
 const variableCodeExpData = [
 	{

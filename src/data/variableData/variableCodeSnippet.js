@@ -1,52 +1,22 @@
-const cplusplus = `return_type your_function_name(parameters) {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const cplusplus = `declaring_type name_variable = value;`;
 
-const csharp = `access_modifier return_type your_function_name(parameters) {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const csharp = `declaring_type name_variable = value;`;
 
-const javascript = `function your_function_name(parameters) {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const javascript = `let name_variable = value;`;
 
-const python = `def your_function_name(parameters):
-    # body of function, any statements and computations
-    # return statement (if applicable)
-`;
+const python = `name_variable= value`;
 
-const ruby = `def your_function_name
-    # body of function, any statements and computations
-    # return statement (if applicable)
-end`;
+const ruby = `name_variable = value`;
 
-const java = `access_modifier return_type your_function_name(parameters) {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const java = `declaring_type name_variable = value;`;
 
-const swift = `func your_function_name(parameters) -> ReturnType {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const swift = `var name_variable: declaring_type = value`;
 
-const go = `func your_function_name(parameters) (return_type) {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const go = `var name_variable declaring_type = value`;
 
-const typescript = `function your_function_name(parameters: ParameterType): ReturnType {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const typescript = `let name_variable: declaring_type = value`;
 
-const php = `function your_function_name($parameters) {
-    // body of function, any statements and computations
-    // return statement (if applicable)
-}`;
+const php = `$name_variable = value;`;
 
 const variableCodeData = [
 	{

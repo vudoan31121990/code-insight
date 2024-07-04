@@ -11,7 +11,7 @@ const variableExpReducer = (state = initialState, action) => {
 		case GET_VARIABLE_EXP_SUCCESS:
 			return {
 				...state,
-				classExpSnippets: action.payload,
+				variableExpSnippets: action.payload,
 				loading: false
 			};
 		case GET_VARIABLE_EXP_FAILURE:

@@ -8,6 +8,14 @@ import functionSnippetReducer from './reducers/functionReducers/functionSnippetR
 import functionExpSnippetReducer from './reducers/functionReducers/functionExpReducer';
 import variableSnippetReducer from './reducers/variableReducers/variableSnippetReducer';
 import variableExpSnippetReducer from './reducers/variableReducers/variableExpReducer';
+import ifelseSnippetReducer from './reducers/ifelseReducers/ifelseSnippetReducer';
+import ifelseExpReducer from './reducers/ifelseReducers/ifelseExpReducer';
+import switchSnippetReducer from './reducers/switchReducers/switchSnippetReducer';
+import switchExpSnippetReducer from './reducers/switchReducers/switchExpReducer';
+import forSnippetReducer from './reducers/forReducers/forSnippetReducer';
+import forExpSnippetReducer from './reducers/forReducers/forExpReducer';
+import whileSnippetReducer from './reducers/whileReducers/whileSnippetReducer';
+import whileExpSnippetReducer from './reducers/whileReducers/whileExpReducer';
 
 const rootReducer = combineReducers({
 	languages: languagesReducer,
@@ -18,7 +26,15 @@ const rootReducer = combineReducers({
 	functionSnippets: functionSnippetReducer,
 	functionExpSnippets: functionExpSnippetReducer,
 	variableSnippets: variableSnippetReducer,
-	variableExpSnippets: variableExpSnippetReducer
+	variableExpSnippets: variableExpSnippetReducer,
+	ifelseSnippets: ifelseSnippetReducer,
+	ifelseExpSnippets: ifelseExpReducer,
+	switchSnippets: switchSnippetReducer,
+	switchExpSnippets: switchExpSnippetReducer,
+	forSnippets: forSnippetReducer,
+	forExpSnippets: forExpSnippetReducer,
+	whileSnippets: whileSnippetReducer,
+	whileExpSnippets: whileExpSnippetReducer,
 });
 
 export default rootReducer;

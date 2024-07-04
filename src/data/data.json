@@ -13,8 +13,8 @@
             "filterDesc": "A variable in programming languages is a named storage location used to hold data that can change during the execution of a program."
         },
         {
-            "filterName": "If-else Conditional",
-            "filterDesc": "An if-else conditional in programming languages is a control flow statement based on whether a condition is true or false."
+            "filterName": "If-Else Conditional",
+            "filterDesc": "An if-Else conditional in programming languages is a control flow statement based on whether a condition is true or false."
         },
         {
             "filterName": "Switch Case Conditional",
@@ -43,7 +43,7 @@
             "playgroundDesc": "A variable is a named storage location used to hold data that can change during the execution of a program."
         },
         {
-            "playgroundId": "If-else Conditional",
+            "playgroundId": "If-Else Conditional",
             "playgroundDesc": "An if-else conditional in programming languages is a control flow statement that allows you to execute different code blocks based on whether a condition is true or false."
         },
         {
@@ -52,7 +52,7 @@
         },
         {
             "playgroundId": "For Loop",
-            "playgroundDesc": "A loop in programming languages is a control flow statement used to repeatedly execute a block of code a certain number of times or over a sequence of values."
+            "playgroundDesc": "A for loop in programming languages is a control flow statement used to repeatedly execute a block of code a certain number of times or over a sequence of values."
         },
         {
             "playgroundId": "While Loop",
