@@ -1,0 +1,42 @@
+.ab-section {
+	display: flex;
+	flex-direction: column;
+	padding: 40px 0 20px;
+	background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+	color: rgba(255, 255, 255, 0.75);
+	margin-bottom: 20px;
+}
+.ab-section-title {
+	position: relative;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+.ab-link {
+	color: white;
+	margin-bottom: 15px;
+	text-decoration: none;
+}
+.ab-link:hover {
+	text-decoration: underline;
+	color: green;
+}
+.ab-description {
+}
+
+@media screen and (min-width: 1400px) {
+	.ab-link-section {
+		padding-left: 100px;
+	}
+}
+
+@media screen and (min-width: 430) and (max-width: 1400px) {
+	.ab-link-section {
+		padding-left: 20px;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.ab-link-section {
+		padding-left: 0px;
+	}
+}

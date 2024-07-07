@@ -1,0 +1,41 @@
+.ft-section-title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	margin-bottom: 20px;
+	color: white
+}
+.filter-section {
+	padding-bottom: 30px;
+}
+.play-button {
+	padding: 20px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	transition: background-color 0.3s ease;
+}
+.play-button:hover {
+	color: #1f386e;
+	background: rgb(196, 205, 255);
+}
+.ft-button-area {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-bottom: 40px;
+	padding-top: 30px;
+}
+.ft-button-active {
+	margin-bottom: -30px;
+}
+.ft-loader {
+	text-align: center;
+}
+.service-unavailable-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	padding-top: 20px;
+	background-color: #ffff80;
+}
