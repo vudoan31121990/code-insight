@@ -1,23 +1,28 @@
-import { GET_IFELSE_SNIPPET_SUCCESS, GET_IFELSE_SNIPPET_FAILURE } from '../../action';
+import { GET_IFELSE_SNIPPET_LOADING, GET_IFELSE_SNIPPET_SUCCESS, GET_IFELSE_SNIPPET_FAILURE } from '../../action';
 
 const initialState = {
 	ifelseSnippets: [],
-	loading: false,
+	isLoading: false,
 	error: null
 };
 
 const ifelseSnippetReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case GET_IFELSE_SNIPPET_LOADING:
+			return {
+				...state,
+				isLoading: true
+			};
 		case GET_IFELSE_SNIPPET_SUCCESS:
 			return {
 				...state,
 				ifelseSnippets: action.payload,
-				loading: false
+				isLoading: false
 			};
 		case GET_IFELSE_SNIPPET_FAILURE:
 			return {
 				...state,
-				loading: false,
+				isLoading: false,
 				error: action.payload
 			};
 		default:

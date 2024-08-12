@@ -1,23 +1,28 @@
-import { GET_VARIABLE_SNIPPET_SUCCESS, GET_VARIABLE_SNIPPET_FAILURE } from '../../action';
+import { GET_VARIABLE_SNIPPET_LOADING, GET_VARIABLE_SNIPPET_SUCCESS, GET_VARIABLE_SNIPPET_FAILURE } from '../../action';
 
 const initialState = {
 	variableSnippets: [],
-	loading: false,
+	isLoading: false,
 	error: null
 };
 
 const variableSnippetReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case GET_VARIABLE_SNIPPET_LOADING:
+			return {
+				...state,
+				isLoading: true
+			};
 		case GET_VARIABLE_SNIPPET_SUCCESS:
 			return {
 				...state,
 				variableSnippets: action.payload,
-				loading: false
+				isLoading: false
 			};
 		case GET_VARIABLE_SNIPPET_FAILURE:
 			return {
 				...state,
-				loading: false,
+				isLoading: false,
 				error: action.payload
 			};
 		default:

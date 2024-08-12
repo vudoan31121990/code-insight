@@ -1,4 +1,4 @@
-import { GET_FOR_EXP_SUCCESS, GET_FOR_EXP_FAILURE } from '../../redux/action';
+import { GET_FOR_EXP_LOADING, GET_FOR_EXP_SUCCESS, GET_FOR_EXP_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { forLoopCodeExpData } from '@src/data/forLoopData/forLoopCodeExample';
 
@@ -7,8 +7,11 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const forExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = forLoopCodeExpData;
-			dispatch({ type: GET_FOR_EXP_SUCCESS, payload: data });
+			setTimeout(() => {
+				dispatch({ type: GET_FOR_EXP_LOADING});
+				const data = forLoopCodeExpData;
+				dispatch({ type: GET_FOR_EXP_SUCCESS, payload: data });
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {

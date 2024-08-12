@@ -1,4 +1,4 @@
-import { GET_SWITCH_SNIPPET_SUCCESS, GET_SWITCH_SNIPPET_FAILURE } from '../../redux/action';
+import { GET_SWITCH_SNIPPET_LOADING, GET_SWITCH_SNIPPET_SUCCESS, GET_SWITCH_SNIPPET_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { switchCodeData } from '@src/data/switchData/switchCodeSnippet';
 
@@ -7,8 +7,11 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const switchSnippetService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = switchCodeData;
-			dispatch({ type: GET_SWITCH_SNIPPET_SUCCESS, payload: data });
+			setTimeout(() => {
+				dispatch({ type: GET_SWITCH_SNIPPET_LOADING});
+				const data = switchCodeData;
+				dispatch({ type: GET_SWITCH_SNIPPET_SUCCESS, payload: data });
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {

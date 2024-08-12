@@ -1,4 +1,4 @@
-import { GET_WHILE_SNIPPET_SUCCESS, GET_WHILE_SNIPPET_FAILURE } from '../../redux/action';
+import { GET_WHILE_SNIPPET_LOADING, GET_WHILE_SNIPPET_SUCCESS, GET_WHILE_SNIPPET_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { whileLoopCodeData } from '@src/data/whileLoopData/whileCodeSnippet';
 
@@ -7,8 +7,11 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const whileSnippetService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = whileLoopCodeData;
-			dispatch({ type: GET_WHILE_SNIPPET_SUCCESS, payload: data });
+			setTimeout(() => {
+				dispatch({ type: GET_WHILE_SNIPPET_LOADING});
+				const data = whileLoopCodeData;
+				dispatch({ type: GET_WHILE_SNIPPET_SUCCESS, payload: data });
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {

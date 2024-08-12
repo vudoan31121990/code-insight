@@ -1,4 +1,4 @@
-import { GET_WHILE_EXP_SUCCESS, GET_WHILE_EXP_FAILURE } from '../../redux/action';
+import { GET_WHILE_EXP_LOADING, GET_WHILE_EXP_SUCCESS, GET_WHILE_EXP_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { whileLoopCodeExpData } from '@src/data/whileLoopData/whileCodeSnippetExample';
 
@@ -7,8 +7,11 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const whileExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = whileLoopCodeExpData;
-			dispatch({ type: GET_WHILE_EXP_SUCCESS, payload: data });
+			setTimeout(() => {
+				dispatch({ type: GET_WHILE_EXP_LOADING});
+				const data = whileLoopCodeExpData;
+				dispatch({ type: GET_WHILE_EXP_SUCCESS, payload: data });
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {

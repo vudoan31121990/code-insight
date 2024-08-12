@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { BarLoader } from 'react-spinners';
 import './playground.scss';
+import { ServiceUnavailable } from '@src/components/service-unavailable/ServiceUnavailable';
 import { FilterLanguage } from '@src/components/filter-language/FilterLanguage';
 import { CodeSection } from '@src/components/code-section/CodeSection';
 import languagesService from '@src/services/languageService';
@@ -34,7 +36,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	const scrollRef = useRef(null);
 	const dispatch = useDispatch();
 	const { languages } = useSelector((state) => state.languages);
-	const { playgrounds } = useSelector((state) => state.playgrounds);
+	const { playgrounds, isPlaygroundsLoading, playgroundError } = useSelector(
+		(state) => state.playgrounds
+	);
 	const { classSnippets } = useSelector((state) => state.classSnippets);
 	const { classExpSnippets } = useSelector((state) => state.classExpSnippets);
 	const { functionSnippets } = useSelector((state) => state.functionSnippets);
@@ -56,21 +60,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	useEffect(() => {
 		dispatch(languagesService());
 		dispatch(playgroundsService());
-		dispatch(classSnippetService());
-		dispatch(classExpService());
-		dispatch(functionSnippetService());
-		dispatch(functionExpService());
-		dispatch(variableSnippetService());
-		dispatch(variableExpService());
-		dispatch(ifelseSnippetService());
-		dispatch(ifelseExpService());
-		dispatch(switchSnippetService());
-		dispatch(switchExpService());
-		dispatch(forSnippetService());
-		dispatch(forExpService());
-		dispatch(whileSnippetService());
-		dispatch(whileExpService());
-	}, [dispatch]);
+	}, []);
 
 	/**
 	 * Handle changing the scroll position when the filter button is clicked.
@@ -98,8 +88,44 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 		switchProgrammingDescription(filter);
 		switchCodeSnippet(filter);
 		handleLanguageClick(selectedLanguage);
+		loadingApiService();
 	}, [filter]);
 
+	const loadingApiService = () => {
+		switch(filter) {
+			case 'Class':
+				fetchDispatchData(classSnippetService, classExpService);
+				break;
+			case 'Function':
+				fetchDispatchData(functionSnippetService, functionExpService);
+				break;
+			case 'Variable':
+				fetchDispatchData(variableSnippetService, variableExpService);
+				break;
+			case 'If-Else Conditional':
+				fetchDispatchData(ifelseSnippetService, ifelseExpService);
+				break;
+			case 'Switch Case Conditional':
+				fetchDispatchData(switchSnippetService, switchExpService);
+				break;
+			case 'For Loop':
+				fetchDispatchData(forSnippetService, forExpService);
+				break;
+			case 'While Loop':
+				fetchDispatchData(whileSnippetService, whileExpService);
+				break;
+			default:
+				break;
+		}
+	};
+
+	const fetchDispatchData = (snippetService, expService) => {
+		if (snippetService.length === 0 && expService.length === 0) {
+			dispatch(snippetService());
+			dispatch(expService());
+		}
+	};
+	
 	/**
 	 * Handle loading code snippet areas based on default language (C++).
 	 */
@@ -175,41 +201,49 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
 			<div className="text-center">
-				<div className="container pg-playground-section">
-					<div className="section-title">
-						<h2>{t('playground.title')}</h2>
-						<p className="pg-programming-description">{programmingDescription}</p>
-						<p className="pg-programming-description">{t('playground.description1')}</p>
-					</div>
-					<div className="row">
-						<p className="pg-programming-description">{t('playground.description2')}</p>
-						<div className="pg-playground-box">
-							<div className="row pg-dropdown-language">
-								<div className="col-6 col-sm-2">
-									<p>{t('codeSnippet.title')}</p>
+			<div className="container pg-playground-section">
+						<div className="section-title">
+							<h2>{t('playground.title')}</h2>
+							{isPlaygroundsLoading ? <BarLoader /> : null}
+							{playgroundError ? <ServiceUnavailable /> : null}
+							{playgrounds.length > 0 ? <p className="pg-programming-description">{programmingDescription}</p> : null}
+							<p className="pg-programming-description">
+								{t('playground.description1')}
+							</p>
+						</div>
+						<div className="row">
+							<p className="pg-programming-description">
+								{t('playground.description2')}
+							</p>
+							<div className="pg-playground-box">
+								<div className="row pg-dropdown-language">
+									<div className="col-6 col-sm-2">
+										<p>{t('codeSnippet.title')}</p>
+									</div>
+									<FilterLanguage
+										selectedLanguage={selectedLanguage}
+										programmingLanguages={languages}
+										handleLanguageClick={handleLanguageClick}
+									/>
 								</div>
-								<FilterLanguage
-									selectedLanguage={selectedLanguage}
-									programmingLanguages={languages}
-									handleLanguageClick={handleLanguageClick}
-								/>
+								{filterCodeSnippet ? (
+									<div className="row pg-playground-code">
+										<CodeSection code={filterCodeSnippet} />
+									</div>
+								) : null}
 							</div>
-							{filterCodeSnippet ? (
-								<div className="row pg-playground-code">
-									<CodeSection code={filterCodeSnippet} />
-								</div>
-							) : null}
-						</div>
-						<p className="pg-programming-description">{t('playground.description3')}</p>
-						<div className="pg-playground-box">
-							{languageExample ? (
-								<div className="row pg-playground-code">
-									<CodeSection code={languageExample} />
-								</div>
-							) : null}
+							<p className="pg-programming-description">
+								{t('playground.description3')}
+							</p>
+							<div className="pg-playground-box">
+								{languageExample ? (
+									<div className="row pg-playground-code">
+										<CodeSection code={languageExample} />
+									</div>
+								) : null}
+							</div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	);

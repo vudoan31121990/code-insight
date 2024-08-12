@@ -1,4 +1,4 @@
-import { GET_LANGUAGE_SUCCESS, GET_LANGUAGE_FAILURE } from '../redux/action';
+import { GET_LANGUAGE_LOADING, GET_LANGUAGE_SUCCESS, GET_LANGUAGE_FAILURE } from '../redux/action';
 import config from '@src/configmap/config.json';
 import dataResponse from '@src/data/data.json';
 
@@ -7,8 +7,11 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const languagesService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = dataResponse.Languages;
-			dispatch({ type: GET_LANGUAGE_SUCCESS, payload: data });
+			setTimeout(() => {
+				dispatch({ type: GET_LANGUAGE_LOADING});
+				const data = dataResponse.Languages;
+				dispatch({ type: GET_LANGUAGE_SUCCESS, payload: data });
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {
