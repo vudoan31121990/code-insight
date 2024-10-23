@@ -36,7 +36,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	const scrollRef = useRef(null);
 	const dispatch = useDispatch();
 	const { languages } = useSelector((state) => state.languages);
-	const { playgrounds, isPlaygroundsLoading, playgroundError } = useSelector(
+	const { playgrounds, isLoading, playgroundError } = useSelector(
 		(state) => state.playgrounds
 	);
 	const { classSnippets } = useSelector((state) => state.classSnippets);
@@ -60,7 +60,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	useEffect(() => {
 		dispatch(languagesService());
 		dispatch(playgroundsService());
-	}, []);
+	}, [dispatch]);
 
 	/**
 	 * Handle changing the scroll position when the filter button is clicked.
@@ -92,7 +92,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	}, [filter]);
 
 	const loadingApiService = () => {
-		switch(filter) {
+		switch (filter) {
 			case 'Class':
 				fetchDispatchData(classSnippetService, classExpService);
 				break;
@@ -125,7 +125,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 			dispatch(expService());
 		}
 	};
-	
+
 	/**
 	 * Handle loading code snippet areas based on default language (C++).
 	 */
@@ -201,49 +201,45 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
 			<div className="text-center">
-			<div className="container pg-playground-section">
-						<div className="section-title">
-							<h2>{t('playground.title')}</h2>
-							{isPlaygroundsLoading ? <BarLoader /> : null}
-							{playgroundError ? <ServiceUnavailable /> : null}
-							{playgrounds.length > 0 ? <p className="pg-programming-description">{programmingDescription}</p> : null}
-							<p className="pg-programming-description">
-								{t('playground.description1')}
-							</p>
-						</div>
-						<div className="row">
-							<p className="pg-programming-description">
-								{t('playground.description2')}
-							</p>
-							<div className="pg-playground-box">
-								<div className="row pg-dropdown-language">
-									<div className="col-6 col-sm-2">
-										<p>{t('codeSnippet.title')}</p>
-									</div>
-									<FilterLanguage
-										selectedLanguage={selectedLanguage}
-										programmingLanguages={languages}
-										handleLanguageClick={handleLanguageClick}
-									/>
+				<div className="container pg-playground-section">
+					<div className="section-title">
+						<h2>{t('playground.title')}</h2>
+						{isLoading ? <BarLoader /> : null}
+						{!isLoading && playgroundError ? <ServiceUnavailable /> : null}
+						{!isLoading && playgrounds.length > 0 ? (
+							<p className="pg-programming-description">{programmingDescription}</p>
+						) : null}
+						<p className="pg-programming-description">{t('playground.description1')}</p>
+					</div>
+					<div className="row">
+						<p className="pg-programming-description">{t('playground.description2')}</p>
+						<div className="pg-playground-box">
+							<div className="row pg-dropdown-language">
+								<div className="col-6 col-sm-2">
+									<p>{t('codeSnippet.title')}</p>
 								</div>
-								{filterCodeSnippet ? (
-									<div className="row pg-playground-code">
-										<CodeSection code={filterCodeSnippet} />
-									</div>
-								) : null}
+								<FilterLanguage
+									selectedLanguage={selectedLanguage}
+									programmingLanguages={languages}
+									handleLanguageClick={handleLanguageClick}
+								/>
 							</div>
-							<p className="pg-programming-description">
-								{t('playground.description3')}
-							</p>
-							<div className="pg-playground-box">
+							{filterCodeSnippet ? (
+								<div className="row pg-playground-code">
+									<CodeSection code={filterCodeSnippet} />
+								</div>
+							) : null}
+						</div>
+						<p className="pg-programming-description">{t('playground.description3')}</p>
+						{/* <div className="pg-playground-box">
 								{languageExample ? (
 									<div className="row pg-playground-code">
 										<CodeSection code={languageExample} />
 									</div>
 								) : null}
-							</div>
-						</div>
+							</div> */}
 					</div>
+				</div>
 			</div>
 		</div>
 	);

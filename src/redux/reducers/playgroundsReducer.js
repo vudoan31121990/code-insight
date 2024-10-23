@@ -2,7 +2,7 @@ import { GET_PLAYGROUNDS_LOADING ,GET_PLAYGROUNDS_SUCCESS, GET_PLAYGROUNDS_FAILU
 
 const initialState = {
 	playgrounds: [],
-	isPlaygroundsLoading: false,
+	isLoading: false,
 	playgroundError: null
 };
 
@@ -11,18 +11,18 @@ const playgroundsReducer = (state = initialState, action) => {
 		case GET_PLAYGROUNDS_LOADING:
 			return {
 				...state,
-				isPlaygroundsLoading: true
+				isLoading: true
 			};
 		case GET_PLAYGROUNDS_SUCCESS:
 			return {
 				...state,
 				playgrounds: action.payload,
-				isPlaygroundsLoading: false
+				isLoading: false
 			};
 		case GET_PLAYGROUNDS_FAILURE:
 			return {
 				...state,
-				isPlaygroundsLoading: false,
+				isLoading: false,
 				playgroundError: action.payload
 			};
 		default:
