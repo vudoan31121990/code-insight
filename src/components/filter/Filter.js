@@ -42,8 +42,7 @@ export const Filter = ({ onClick, scrollToId }) => {
 					</div>
 				) : null}
 				{!isLoading && filters.length > 0 && !error ? (
-					<div className="container filter-section">
-						
+					<div className="container filter-section">	
 						<div className="row">
 							<CarouselFillter items={filters} handleOnClick={handleOnClick} />
 						</div>

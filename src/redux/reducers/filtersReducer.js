@@ -1,4 +1,4 @@
-import { GET_FILTERS_FAILURE, GET_FILTERS_SUCCESS } from '../action';
+import { GET_FILTERS_LOADING, GET_FILTERS_FAILURE, GET_FILTERS_SUCCESS } from '../action';
 
 const initialState = {
 	filters: [],
@@ -8,6 +8,11 @@ const initialState = {
 
 const filtersReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case GET_FILTERS_LOADING:
+			return {
+				...state,
+				isLoading: true
+			};
 		case GET_FILTERS_SUCCESS:
 			return {
 				...state,

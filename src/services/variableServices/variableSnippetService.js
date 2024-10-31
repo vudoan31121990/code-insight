@@ -1,4 +1,4 @@
-import { GET_VARIABLE_SNIPPET_SUCCESS, GET_VARIABLE_SNIPPET_FAILURE } from '../../redux/action';
+import { GET_VARIABLE_SNIPPET_LOADING, GET_VARIABLE_SNIPPET_SUCCESS, GET_VARIABLE_SNIPPET_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { variableCodeData } from '@src/data/variableData/variableCodeSnippet';
 
@@ -7,8 +7,11 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const variableSnippetService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = variableCodeData;
-			dispatch({ type: GET_VARIABLE_SNIPPET_SUCCESS, payload: data });
+			setTimeout(() => {
+				dispatch({ type: GET_VARIABLE_SNIPPET_LOADING});
+				const data = variableCodeData;
+				dispatch({ type: GET_VARIABLE_SNIPPET_SUCCESS, payload: data });
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {

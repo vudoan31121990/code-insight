@@ -1,23 +1,28 @@
-import { GET_LANGUAGE_SUCCESS, GET_LANGUAGE_FAILURE } from '../action';
+import { GET_LANGUAGE_LOADING, GET_LANGUAGE_SUCCESS, GET_LANGUAGE_FAILURE } from '../action';
 
 const initialState = {
 	languages: [],
-	loading: false,
+	isLoading: false,
 	error: null
 };
 
 const languagesReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case GET_LANGUAGE_LOADING:
+			return {
+				...state,
+				isLoading: true
+			};
 		case GET_LANGUAGE_SUCCESS:
 			return {
 				...state,
 				languages: action.payload,
-				loading: false
+				isLoading: false
 			};
 		case GET_LANGUAGE_FAILURE:
 			return {
 				...state,
-				loading: false,
+				isLoading: false,
 				error: action.payload
 			};
 		default:

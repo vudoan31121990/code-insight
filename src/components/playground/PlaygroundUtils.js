@@ -7,7 +7,7 @@
 const switchDescription = (filter, playgrounds) => {
 	let findPlaygroundDesc = '';
 	findPlaygroundDesc = playgrounds.find((item) => item.playgroundId === filter);
-	return findPlaygroundDesc.playgroundDesc;
+	return findPlaygroundDesc ? findPlaygroundDesc.playgroundDesc : '';
 };
 
 /**

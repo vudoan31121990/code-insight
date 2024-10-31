@@ -1,23 +1,28 @@
-import { GET_SWITCH_SNIPPET_SUCCESS, GET_SWITCH_SNIPPET_FAILURE } from '../../action';
+import { GET_SWITCH_SNIPPET_LOADING, GET_SWITCH_SNIPPET_SUCCESS, GET_SWITCH_SNIPPET_FAILURE } from '../../action';
 
 const initialState = {
 	switchSnippets: [],
-	loading: false,
+	isLoading: false,
 	error: null
 };
 
 const switchSnippetReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case GET_SWITCH_SNIPPET_LOADING:
+			return {
+				...state,
+				isLoading: true
+			};
 		case GET_SWITCH_SNIPPET_SUCCESS:
 			return {
 				...state,
 				switchSnippets: action.payload,
-				loading: false
+				isLoading: false
 			};
 		case GET_SWITCH_SNIPPET_FAILURE:
 			return {
 				...state,
-				loading: false,
+				isLoading: false,
 				error: action.payload
 			};
 		default:

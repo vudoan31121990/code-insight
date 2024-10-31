@@ -1,4 +1,4 @@
-import { GET_VARIABLE_EXP_SUCCESS, GET_VARIABLE_EXP_FAILURE } from '../../redux/action';
+import { GET_VARIABLE_EXP_LOADING, GET_VARIABLE_EXP_SUCCESS, GET_VARIABLE_EXP_FAILURE } from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { variableCodeExpData } from '@src/data/variableData/variableCodeSnippetExample';
 
@@ -7,8 +7,11 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const variableExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
-			const data = variableCodeExpData;
-			dispatch({ type: GET_VARIABLE_EXP_SUCCESS, payload: data });
+			setTimeout(() => {
+				dispatch({ type: GET_VARIABLE_EXP_LOADING});
+				const data = variableCodeExpData;
+				dispatch({ type: GET_VARIABLE_EXP_SUCCESS, payload: data });
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {
