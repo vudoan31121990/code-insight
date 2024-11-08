@@ -1,0 +1,82 @@
+version: 2.1
+
+executors:
+  docker-executor:
+    docker:
+      - image: cimg/node:23.1.0
+    working_directory: ~/repo
+
+jobs:
+  build_app:
+    executor: docker-executor
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/repo
+
+      # Cache dependencies to make builds faster
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      # Install dependencies
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      # Save dependencies to cache for future builds
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+      # Build the React app
+      - run:
+          name: Build React app
+          command: npm run build
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .          
+
+  deploy_to_firebase:
+    executor: docker-executor
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/repo
+
+      # Install Firebase CLI
+      - run:
+          name: Install Firebase CLI
+          command: npm install -g firebase-tools
+
+      # Deploy to Firebase Hosting
+      - run:
+          name: Deploy to Firebase Hosting
+          command: |
+            firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build_docker
+      - push_google_artifact:
+          requires:
+            - build_docker
+      - deploy:
+          requires:
+            - push_google_artifact
+          filters:
+            branches:
+              only: COINSIGHT-16-Setup-CircleCI-for-Frontend
