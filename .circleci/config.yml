@@ -71,7 +71,7 @@ workflows:
   build_and_deploy:
     jobs:
       - build_app
-      - deploy_to_firebase::
+      - deploy_to_firebase:
           requires:
             - build_app
           filters:
