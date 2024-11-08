@@ -70,13 +70,10 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build_docker
-      - push_google_artifact:
+      - build_app
+      - deploy_to_firebase::
           requires:
-            - build_docker
-      - deploy:
-          requires:
-            - push_google_artifact
+            - build_app
           filters:
             branches:
               only: COINSIGHT-16-Setup-CircleCI-for-Frontend
