@@ -1,4 +1,8 @@
-import { GET_IFELSE_EXP_LOADING, GET_IFELSE_EXP_SUCCESS, GET_IFELSE_EXP_FAILURE } from '../../redux/action';
+import {
+	GET_IFELSE_EXP_LOADING,
+	GET_IFELSE_EXP_SUCCESS,
+	GET_IFELSE_EXP_FAILURE
+} from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { ifelseCodeExpData } from '@src/data/ifelseData/ifelseCodeSnippetExample';
 
@@ -8,7 +12,7 @@ const ifelseExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_IFELSE_EXP_LOADING});
+				dispatch({ type: GET_IFELSE_EXP_LOADING });
 				const data = ifelseCodeExpData;
 				dispatch({ type: GET_IFELSE_EXP_SUCCESS, payload: data });
 			}, 2000);

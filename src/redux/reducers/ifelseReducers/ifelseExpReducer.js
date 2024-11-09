@@ -1,4 +1,8 @@
-import { GET_IFELSE_EXP_LOADING, GET_IFELSE_EXP_SUCCESS, GET_IFELSE_EXP_FAILURE } from '../../action';
+import {
+	GET_IFELSE_EXP_LOADING,
+	GET_IFELSE_EXP_SUCCESS,
+	GET_IFELSE_EXP_FAILURE
+} from '../../action';
 
 const initialState = {
 	ifelseExpSnippets: [],

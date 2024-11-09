@@ -8,7 +8,7 @@ const forExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_FOR_EXP_LOADING});
+				dispatch({ type: GET_FOR_EXP_LOADING });
 				const data = forLoopCodeExpData;
 				dispatch({ type: GET_FOR_EXP_SUCCESS, payload: data });
 			}, 2000);

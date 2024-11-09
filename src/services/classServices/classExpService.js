@@ -1,4 +1,8 @@
-import { GET_CLASS_EXP_LOADING, GET_CLASS_EXP_SUCCESS, GET_CLASS_EXP_FAILURE } from '../../redux/action';
+import {
+	GET_CLASS_EXP_LOADING,
+	GET_CLASS_EXP_SUCCESS,
+	GET_CLASS_EXP_FAILURE
+} from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { classCodeExpData } from '@src/data/classData/classCodeSnippetExample';
 
@@ -8,7 +12,7 @@ const classExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_CLASS_EXP_LOADING});
+				dispatch({ type: GET_CLASS_EXP_LOADING });
 				const data = classCodeExpData;
 				dispatch({ type: GET_CLASS_EXP_SUCCESS, payload: data });
 			}, 2000);

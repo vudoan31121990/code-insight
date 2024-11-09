@@ -1,4 +1,8 @@
-import { GET_SWITCH_EXP_LOADING, GET_SWITCH_EXP_SUCCESS, GET_SWITCH_EXP_FAILURE } from '../../action';
+import {
+	GET_SWITCH_EXP_LOADING,
+	GET_SWITCH_EXP_SUCCESS,
+	GET_SWITCH_EXP_FAILURE
+} from '../../action';
 
 const initialState = {
 	switchExpSnippets: [],

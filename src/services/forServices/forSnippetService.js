@@ -1,4 +1,8 @@
-import { GET_FOR_SNIPPET_LOADING, GET_FOR_SNIPPET_SUCCESS, GET_FOR_SNIPPET_FAILURE } from '../../redux/action';
+import {
+	GET_FOR_SNIPPET_LOADING,
+	GET_FOR_SNIPPET_SUCCESS,
+	GET_FOR_SNIPPET_FAILURE
+} from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { forLoopCodeData } from '@src/data/forData/forLoopCodeSnippet';
 
@@ -8,7 +12,7 @@ const forSnippetService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_FOR_SNIPPET_LOADING});
+				dispatch({ type: GET_FOR_SNIPPET_LOADING });
 				const data = forLoopCodeData;
 				dispatch({ type: GET_FOR_SNIPPET_SUCCESS, payload: data });
 			}, 2000);

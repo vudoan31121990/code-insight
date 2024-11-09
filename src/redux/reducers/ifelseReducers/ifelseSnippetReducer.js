@@ -1,4 +1,8 @@
-import { GET_IFELSE_SNIPPET_LOADING, GET_IFELSE_SNIPPET_SUCCESS, GET_IFELSE_SNIPPET_FAILURE } from '../../action';
+import {
+	GET_IFELSE_SNIPPET_LOADING,
+	GET_IFELSE_SNIPPET_SUCCESS,
+	GET_IFELSE_SNIPPET_FAILURE
+} from '../../action';
 
 const initialState = {
 	ifelseSnippets: [],

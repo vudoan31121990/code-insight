@@ -1,4 +1,8 @@
-import { GET_CLASS_SNIPPET_LOADING, GET_CLASS_SNIPPET_SUCCESS, GET_CLASS_SNIPPET_FAILURE } from '../../action';
+import {
+	GET_CLASS_SNIPPET_LOADING,
+	GET_CLASS_SNIPPET_SUCCESS,
+	GET_CLASS_SNIPPET_FAILURE
+} from '../../action';
 
 const initialState = {
 	classSnippets: [],

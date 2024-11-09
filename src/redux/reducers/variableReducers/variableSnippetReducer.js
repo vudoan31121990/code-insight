@@ -1,4 +1,8 @@
-import { GET_VARIABLE_SNIPPET_LOADING, GET_VARIABLE_SNIPPET_SUCCESS, GET_VARIABLE_SNIPPET_FAILURE } from '../../action';
+import {
+	GET_VARIABLE_SNIPPET_LOADING,
+	GET_VARIABLE_SNIPPET_SUCCESS,
+	GET_VARIABLE_SNIPPET_FAILURE
+} from '../../action';
 
 const initialState = {
 	variableSnippets: [],

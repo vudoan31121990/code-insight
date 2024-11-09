@@ -1,4 +1,8 @@
-import { GET_FUNCTION_EXP_LOADING, GET_FUNCTION_EXP_SUCCESS, GET_FUNCTION_EXP_FAILURE } from '../../action';
+import {
+	GET_FUNCTION_EXP_LOADING,
+	GET_FUNCTION_EXP_SUCCESS,
+	GET_FUNCTION_EXP_FAILURE
+} from '../../action';
 
 const initialState = {
 	functionExpSnippets: [],

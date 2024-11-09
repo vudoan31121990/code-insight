@@ -9,7 +9,7 @@ const languagesService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_LANGUAGE_LOADING});
+				dispatch({ type: GET_LANGUAGE_LOADING });
 				const data = dataResponse.Languages;
 				dispatch({ type: GET_LANGUAGE_SUCCESS, payload: data });
 			}, 2000);
@@ -17,7 +17,7 @@ const languagesService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				dispatch({ type: GET_LANGUAGE_LOADING});
+				dispatch({ type: GET_LANGUAGE_LOADING });
 				const response = await fetch(`${baseUrl}/languages`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');

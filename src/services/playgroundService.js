@@ -1,4 +1,8 @@
-import { GET_PLAYGROUNDS_LOADING, GET_PLAYGROUNDS_SUCCESS, GET_PLAYGROUNDS_FAILURE } from '../redux/action';
+import {
+	GET_PLAYGROUNDS_LOADING,
+	GET_PLAYGROUNDS_SUCCESS,
+	GET_PLAYGROUNDS_FAILURE
+} from '../redux/action';
 import config from '@src/configmap/config.json';
 import dataResponse from '@src/data/data.json';
 
@@ -8,10 +12,10 @@ const playgroundsService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_PLAYGROUNDS_LOADING});
+				dispatch({ type: GET_PLAYGROUNDS_LOADING });
 				const data = dataResponse.Playgrounds;
 				dispatch({ type: GET_PLAYGROUNDS_SUCCESS, payload: data });
-			}, 2000);	
+			}, 2000);
 		};
 	} else {
 		return async (dispatch) => {

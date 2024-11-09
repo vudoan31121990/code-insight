@@ -1,4 +1,8 @@
-import { GET_VARIABLE_EXP_LOADING, GET_VARIABLE_EXP_SUCCESS, GET_VARIABLE_EXP_FAILURE } from '../../action';
+import {
+	GET_VARIABLE_EXP_LOADING,
+	GET_VARIABLE_EXP_SUCCESS,
+	GET_VARIABLE_EXP_FAILURE
+} from '../../action';
 
 const initialState = {
 	variableExpSnippets: [],

@@ -34,7 +34,7 @@ const rootReducer = combineReducers({
 	forSnippets: forSnippetReducer,
 	forExpSnippets: forExpSnippetReducer,
 	whileSnippets: whileSnippetReducer,
-	whileExpSnippets: whileExpSnippetReducer,
+	whileExpSnippets: whileExpSnippetReducer
 });
 
 export default rootReducer;

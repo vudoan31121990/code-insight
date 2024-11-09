@@ -1,4 +1,8 @@
-import { GET_FUNCTION_EXP_LOADING, GET_FUNCTION_EXP_SUCCESS, GET_FUNCTION_EXP_FAILURE } from '../../redux/action';
+import {
+	GET_FUNCTION_EXP_LOADING,
+	GET_FUNCTION_EXP_SUCCESS,
+	GET_FUNCTION_EXP_FAILURE
+} from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { functionCodeExpData } from '@src/data/functionData/functionCodeSnippetExample';
 
@@ -8,7 +12,7 @@ const functionExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_FUNCTION_EXP_LOADING});
+				dispatch({ type: GET_FUNCTION_EXP_LOADING });
 				const data = functionCodeExpData;
 				dispatch({ type: GET_FUNCTION_EXP_SUCCESS, payload: data });
 			}, 2000);
