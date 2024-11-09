@@ -1,4 +1,8 @@
-import { GET_SWITCH_EXP_LOADING, GET_SWITCH_EXP_SUCCESS, GET_SWITCH_EXP_FAILURE } from '../../redux/action';
+import {
+	GET_SWITCH_EXP_LOADING,
+	GET_SWITCH_EXP_SUCCESS,
+	GET_SWITCH_EXP_FAILURE
+} from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { switchCodeExpData } from '@src/data/switchData/switchCodeSnippetExample';
 
@@ -8,7 +12,7 @@ const switchExpService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_SWITCH_EXP_LOADING});
+				dispatch({ type: GET_SWITCH_EXP_LOADING });
 				const data = switchCodeExpData;
 				dispatch({ type: GET_SWITCH_EXP_SUCCESS, payload: data });
 			}, 2000);

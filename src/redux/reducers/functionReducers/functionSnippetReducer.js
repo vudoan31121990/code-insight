@@ -1,4 +1,8 @@
-import { GET_FUNCTION_SNIPPET_LOADING, GET_FUNCTION_SNIPPET_SUCCESS, GET_FUNCTION_SNIPPET_FAILURE } from '../../action';
+import {
+	GET_FUNCTION_SNIPPET_LOADING,
+	GET_FUNCTION_SNIPPET_SUCCESS,
+	GET_FUNCTION_SNIPPET_FAILURE
+} from '../../action';
 
 const initialState = {
 	functionSnippets: [],

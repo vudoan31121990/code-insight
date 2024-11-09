@@ -25,11 +25,10 @@ export const Header = () => {
 						<Row>
 							<Col lg="6">
 								<h2 className="display-4 text-white">
-									Syntax Programming Languages <span>completed with examples</span>
+									Syntax Programming Languages{' '}
+									<span>completed with examples</span>
 								</h2>
-								<p className="lead text-white">
-									{ t('header.description')}
-								</p>
+								<p className="lead text-white">{t('header.description')}</p>
 							</Col>
 						</Row>
 					</div>

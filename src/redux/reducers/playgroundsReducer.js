@@ -1,4 +1,8 @@
-import { GET_PLAYGROUNDS_LOADING ,GET_PLAYGROUNDS_SUCCESS, GET_PLAYGROUNDS_FAILURE } from '../action';
+import {
+	GET_PLAYGROUNDS_LOADING,
+	GET_PLAYGROUNDS_SUCCESS,
+	GET_PLAYGROUNDS_FAILURE
+} from '../action';
 
 const initialState = {
 	playgrounds: [],

@@ -1,4 +1,4 @@
-import {GET_CLASS_EXP_LOADING ,GET_CLASS_EXP_SUCCESS, GET_CLASS_EXP_FAILURE } from '../../action';
+import { GET_CLASS_EXP_LOADING, GET_CLASS_EXP_SUCCESS, GET_CLASS_EXP_FAILURE } from '../../action';
 
 const initialState = {
 	classExpSnippets: [],

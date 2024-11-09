@@ -1,4 +1,8 @@
-import { GET_CLASS_SNIPPET_LOADING, GET_CLASS_SNIPPET_SUCCESS, GET_CLASS_SNIPPET_FAILURE } from '../../redux/action';
+import {
+	GET_CLASS_SNIPPET_LOADING,
+	GET_CLASS_SNIPPET_SUCCESS,
+	GET_CLASS_SNIPPET_FAILURE
+} from '../../redux/action';
 import config from '@src/configmap/config.json';
 import { classCodeSnippetData } from '@src/data/classData/classCodeSnippet';
 
@@ -8,7 +12,7 @@ const classSnippetService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_CLASS_SNIPPET_LOADING});
+				dispatch({ type: GET_CLASS_SNIPPET_LOADING });
 				const data = classCodeSnippetData;
 				dispatch({ type: GET_CLASS_SNIPPET_SUCCESS, payload: data });
 			}, 2000);

@@ -36,9 +36,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	const scrollRef = useRef(null);
 	const dispatch = useDispatch();
 	const { languages } = useSelector((state) => state.languages);
-	const { playgrounds, isLoading, playgroundError } = useSelector(
-		(state) => state.playgrounds
-	);
+	const { playgrounds, isLoading, playgroundError } = useSelector((state) => state.playgrounds);
 	const { classSnippets } = useSelector((state) => state.classSnippets);
 	const { classExpSnippets } = useSelector((state) => state.classExpSnippets);
 	const { functionSnippets } = useSelector((state) => state.functionSnippets);

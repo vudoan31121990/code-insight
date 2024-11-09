@@ -9,7 +9,7 @@ const filtersService = () => {
 	if (mockData) {
 		return (dispatch) => {
 			setTimeout(() => {
-				dispatch({ type: GET_FILTERS_LOADING});
+				dispatch({ type: GET_FILTERS_LOADING });
 				const data = dataResponse.Filters;
 				dispatch({ type: GET_FILTERS_SUCCESS, payload: data });
 			}, 2000);
@@ -17,7 +17,7 @@ const filtersService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				dispatch({ type: GET_FILTERS_LOADING});
+				dispatch({ type: GET_FILTERS_LOADING });
 				const response = await fetch(`${baseUrl}/filters`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');

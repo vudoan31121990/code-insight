@@ -1,4 +1,8 @@
-import { GET_SWITCH_SNIPPET_LOADING, GET_SWITCH_SNIPPET_SUCCESS, GET_SWITCH_SNIPPET_FAILURE } from '../../action';
+import {
+	GET_SWITCH_SNIPPET_LOADING,
+	GET_SWITCH_SNIPPET_SUCCESS,
+	GET_SWITCH_SNIPPET_FAILURE
+} from '../../action';
 
 const initialState = {
 	switchSnippets: [],

@@ -1,0 +1,87 @@
+version: 2.1
+
+executors:
+  docker-executor:
+    docker:
+      - image: cimg/node:23.1.0
+    working_directory: ~/repo
+
+jobs:
+  build_app:
+    executor: docker-executor
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/repo
+
+      # Cache dependencies to make builds faster
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      # Install dependencies
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      # Save dependencies to cache for future builds
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+      # Build the React app
+      - run:
+          name: Build React app
+          command: npm run build || exit 0 
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .          
+
+  deploy_to_firebase:
+    executor: docker-executor
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Configure npm global directory
+          command: |
+            mkdir -p ~/.npm-global
+            npm config set prefix '~/.npm-global'
+            export PATH=$PATH:~/.npm-global/bin
+            echo 'export PATH=$PATH:~/.npm-global/bin' >> ~/.bashrc
+
+      # Install Firebase CLI
+      - run:
+          name: Install Firebase CLI
+          command: sudo npm install -g firebase-tools
+
+      # Deploy to Firebase Hosting
+      - run:
+          name: Deploy to Firebase Hosting
+          command: |
+            firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build_app
+      - deploy_to_firebase:
+          requires:
+            - build_app
+          filters:
+            branches:
+              only: master

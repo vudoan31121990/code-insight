@@ -1,4 +1,8 @@
-import { GET_FOR_SNIPPET_LOADING, GET_FOR_SNIPPET_SUCCESS, GET_FOR_SNIPPET_FAILURE } from '../../action';
+import {
+	GET_FOR_SNIPPET_LOADING,
+	GET_FOR_SNIPPET_SUCCESS,
+	GET_FOR_SNIPPET_FAILURE
+} from '../../action';
 
 const initialState = {
 	forSnippets: [],
