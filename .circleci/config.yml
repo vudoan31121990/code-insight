@@ -84,4 +84,4 @@ workflows:
             - build_app
           filters:
             branches:
-              only: COINSIGHT-16-Setup-CircleCI-for-Frontend
+              only: master
