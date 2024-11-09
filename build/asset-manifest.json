@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.21c36663.css",
-    "main.js": "/static/js/main.d6d1e072.js",
-    "static/js/453.06e301f7.chunk.js": "/static/js/453.06e301f7.chunk.js",
+    "main.css": "/static/css/main.a1eca8b9.css",
+    "main.js": "/static/js/main.c0053dff.js",
+    "static/js/845.adf44234.chunk.js": "/static/js/845.adf44234.chunk.js",
     "static/media/header_background.jpg": "/static/media/header_background.9efbc1aab1eafce209df.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
@@ -18,12 +18,12 @@
     "static/media/nucleo-icons.woff2": "/static/media/nucleo-icons.cba267483aa6a7cb6e33.woff2",
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/index.html",
-    "main.21c36663.css.map": "/static/css/main.21c36663.css.map",
-    "main.d6d1e072.js.map": "/static/js/main.d6d1e072.js.map",
-    "453.06e301f7.chunk.js.map": "/static/js/453.06e301f7.chunk.js.map"
+    "main.a1eca8b9.css.map": "/static/css/main.a1eca8b9.css.map",
+    "main.c0053dff.js.map": "/static/js/main.c0053dff.js.map",
+    "845.adf44234.chunk.js.map": "/static/js/845.adf44234.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.21c36663.css",
-    "static/js/main.d6d1e072.js"
+    "static/css/main.a1eca8b9.css",
+    "static/js/main.c0053dff.js"
   ]
 }

@@ -33,7 +33,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "react-app-rewired start --config webpack.config.js",
     "start:staging": "node node-staging.js",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
@@ -59,13 +59,21 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
     "autoprefixer": "^10.4.20",
+    "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
+    "postcss": "^8.4.47",
     "postcss-calc": "^10.0.2",
     "postcss-loader": "^8.1.1",
     "prettier": "3.2.5",
-    "sass": "^1.72.0",
+    "sass": "^1.80.6",
     "sass-loader": "^16.0.3",
-    "style-loader": "^4.0.0"
+    "style-loader": "^4.0.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   }
 }
