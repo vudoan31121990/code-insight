@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  jira: circleci/jira@2.1.0
+
 executors:
   docker-executor:
     docker:
@@ -9,6 +12,9 @@ executors:
 jobs:
   build_app:
     executor: docker-executor
+
+    environment:
+      JOB_TYPE: "build"
 
     steps:
       - checkout
@@ -40,6 +46,10 @@ jobs:
       - run:
           name: Build React app
           command: npm run build || exit 0 
+
+      - jira/notify:
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
 
       - persist_to_workspace:
           root: .
@@ -78,8 +88,10 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build_app
+      - build_app:
+          context: JIRA_WEBHOOK
       - deploy_to_firebase:
+          context: JIRA_WEBHOOK
           requires:
             - build_app
           filters:
