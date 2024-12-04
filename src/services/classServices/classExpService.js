@@ -24,8 +24,8 @@ const classExpService = () => {
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
-				const data = await response.json();
-				dispatch({ type: GET_CLASS_EXP_SUCCESS, payload: data });
+				const responseJson = await response.json();
+				dispatch({ type: GET_CLASS_EXP_SUCCESS, payload: responseJson.data });
 			} catch (error) {
 				dispatch({ type: GET_CLASS_EXP_FAILURE, payload: error });
 			}
