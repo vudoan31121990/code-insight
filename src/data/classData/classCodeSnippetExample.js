@@ -1,76 +1,24 @@
-const cplusplus = `class YourClass() {
-    std::cout << \"Hello World\";
-}`;
+const cplusplus = `class YourClass() {\n\tstd::cout << \"Hello World\";\n}`;
 
-const csharp = `public class YourClass {
-    Console.WriteLine(\"Hello World\");
-}`;
+const csharp = `public class YourClass {\n\tConsole.WriteLine(\"Hello World\");\n}`;
 
-const javascript = `class YourClass() {
-    console.log(\"Hello World\");
-}
+const javascript = `class YourClass() {\n\tconsole.log(\"Hello World\");\n}
+\nconst YourClass = () => {\n\tconsole.log(\"Hello World\");\n}`;
 
-const YourClass = () => {
-    console.log(\"Hello World\");
-}`;
+const python = `class YourClass():\n\tdef __init__(self):\n\t\tprint(\"Hello World\")\n}`;
 
-const python = `class YourClass():
-    def __init__(self):
-        print(\"Hello World\")
-}`;
+const ruby = `class YourClass\n\tdef initialize\n\tputs \"Hello World\"\n\tend\nend`;
 
-const ruby = `class YourClass
-    def initialize
-        puts \"Hello World\"
-    end
-end`;
+const java = `class YourClass {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println(\"Hello World\");\n\t}\n}`;
 
-const java = `class YourClass {
-    public static void main(String[] args) {
-        System.out.println(\"Hello World\");
-    }
-}`;
+const swift = `class YourClass {\n\tfunc main() {\n\t\tprint(\"Hello World\")\n\t}\n}`;
 
-const swift = `class YourClass {
-    func main() {
-        print(\"Hello World\")
-    }
-}`;
+const go = `package main\nimport "fmt"\ntype Person struct {\n\tname string\n\tage int\n}\n
+func main() {\n\tperson := Person{\n\t\tname: "John",\n\t\tage: 30,\n\t}\n\tfmt.Println(person.name)\n\tfmt.Println(person.age)\n}`;
 
-const go = `
-package main
+const typescript = `class YourClass {\n\tmain() {\n\t\tconsole.log(\"Hello World\");\n\t}\n}`;
 
-import "fmt"
-
-type Person struct {
-    name string
-    age int
-}
-
-func main() {
-
-    person := Person{
-        name: "John",
-        age: 30,
-    }
-
-    fmt.Println(person.name)
-    fmt.Println(person.age)
-}`;
-
-const typescript = `class YourClass {
-    main() {
-        console.log(\"Hello World\");
-    }
-}`;
-
-const php = `<?php
-    class YourClass {
-        public function main() {
-            echo "Hello World";
-        }
-    }
-?>`;
+const php = `<?php\n\tclass YourClass {\n\t\tpublic function main() {\n\t\t\techo "Hello World";\n\t\t}\n\t}\n?>`;
 
 const classCodeExpData = [
 	{

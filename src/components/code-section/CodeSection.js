@@ -8,17 +8,19 @@ export const CodeSection = ({ code }) => {
 
 	useEffect(() => {
 		setTimeout(() => setCopied(false), 2000);
-	}, []);
+	}, [copied]);
+
+	const formatCode = `${code.replace(/\\n/g, '\n').replace(/\\t/g, '\t')}`;
 
 	return (
 		<div className="row">
-			<div className="col">
+			<div className="col-md-10">
 				<pre className="show-code-snippet">
-					<code>{code}</code>
+					<code>{formatCode}</code>
 				</pre>
 			</div>
-			<div className="col copy-button">
-				<CopyToClipboard text={code} onCopy={() => setCopied(true)}>
+			<div className="col-sm-2 copy-button">
+				<CopyToClipboard text={formatCode} onCopy={() => setCopied(true)}>
 					<button className="copy-button">{copied ? 'Copied!' : 'Copy'}</button>
 				</CopyToClipboard>
 			</div>

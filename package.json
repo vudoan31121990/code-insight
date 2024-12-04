@@ -33,8 +33,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start --config webpack.config.js",
-    "start:staging": "node node-staging.js",
+    "start": "export NODE_ENV=development && react-app-rewired start --config webpack.config.js",
+    "start:staging": "export NODE_ENV=development && node node-staging.js",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",

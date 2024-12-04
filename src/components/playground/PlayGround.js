@@ -203,7 +203,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 					<div className="section-title">
 						<h2>{t('playground.title')}</h2>
 						{isLoading ? <BarLoader /> : null}
-						{!isLoading && playgroundError ? <ServiceUnavailable /> : null}
+						{!isLoading && playgroundError != null && playgrounds.length === 0 ? (
+							<ServiceUnavailable />
+						) : null}
 						{!isLoading && playgrounds.length > 0 ? (
 							<p className="pg-programming-description">{programmingDescription}</p>
 						) : null}

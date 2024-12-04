@@ -1,46 +1,24 @@
-const cplusplus = `class YourClass() {\n   //Body of the class, including functions and variables\n};`;
+const cplusplus =
+	'class YourClass() {\n\t//Body of the class, including functions and variables\n};';
 
-const csharp =
-	'public class YourClass {\n   //Body of the class, including functions and variables\n}';
+const csharp = `public class YourClass {\n\t//Body of the class, including functions and variables\n}`;
 
-const javascript = `class YourClass() {
-    // Body of the class, including functions and variables
-}
+const javascript = `class YourClass() {\n\t// Body of the class, including functions and variables\n}
+\n\nconst YourClass = () => {\n\t// Body of the class, including functions and variables\n}`;
 
-const YourClass = () => {
-    // Body of the class, including functions and variables
-} 
-`;
+const python = `class YourClass():\n\t# Body of the class, including functions and variables`;
 
-const python = `class YourClass():
-    # Body of the class, including functions and variables
-`;
+const ruby = `class YourClass\n\t# Body of the class, including functions and variables\nend`;
 
-const ruby = `class YourClass
-    # Body of the class, including functions and variables
-end`;
+const java = `class YourClass {\n\t// Body of the class, including functions and variables\n}`;
 
-const java = `class YourClass {
-    // Body of the class, including functions and variables
-}`;
+const swift = `class YourClass {\n\t// Body of the class, including functions and variables\n}`;
 
-const swift = `class YourClass {
-    // Body of the class, including functions and variables
-}`;
+const go = `type YourObject struct {\n\t// Define the fields of your object\n}`;
 
-const go = `type YourObject struct {
-    // Define the fields of your object
-}`;
+const typescript = `class YourClass {\n\t// Body of the class, including functions and variables\n}`;
 
-const typescript = `class YourClass {
-    // Body of the class, including functions and variables
-}`;
-
-const php = `<?php
-    class YourClass {
-        // Body of the class, including functions and variables
-    }
-?>`;
+const php = `<?php\nclass YourClass {\n\t// Body of the class, including functions and variables\n}\n?>`;
 
 const classCodeSnippetData = [
 	{

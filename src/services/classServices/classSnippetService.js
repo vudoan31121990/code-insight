@@ -7,6 +7,7 @@ import config from '@src/configmap/config.json';
 import { classCodeSnippetData } from '@src/data/classData/classCodeSnippet';
 
 const mockData = config.MOCK_SERVICES_DATA.ENABLED;
+const baseUrl = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_BASE_URL : '/api';
 
 const classSnippetService = () => {
 	if (mockData) {
@@ -20,12 +21,12 @@ const classSnippetService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(process.env.REACT_APP_CLASS_SNIPPET_API);
+				const response = await fetch(`${baseUrl}/class-code`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
-				const data = await response.json();
-				dispatch({ type: GET_CLASS_SNIPPET_SUCCESS, payload: data });
+				const responseJson = await response.json();
+				dispatch({ type: GET_CLASS_SNIPPET_SUCCESS, payload: responseJson.data });
 			} catch (error) {
 				dispatch({ type: GET_CLASS_SNIPPET_FAILURE, payload: error });
 			}
