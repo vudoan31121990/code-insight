@@ -3,7 +3,7 @@ import config from '@src/configmap/config.json';
 import dataResponse from '@src/data/data.json';
 
 const mockData = config.MOCK_SERVICES_DATA.ENABLED;
-const baseUrl = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_BASE_URL : '/api';
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const languagesService = () => {
 	if (mockData) {
