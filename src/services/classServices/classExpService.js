@@ -7,6 +7,7 @@ import config from '@src/configmap/config.json';
 import { classCodeExpData } from '@src/data/classData/classCodeSnippetExample';
 
 const mockData = config.MOCK_SERVICES_DATA.ENABLED;
+const baseUrl = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_BASE_URL : '/api';
 
 const classExpService = () => {
 	if (mockData) {
@@ -20,7 +21,7 @@ const classExpService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(process.env.REACT_APP_CLASS_EXP_API);
+				const response = await fetch(`${baseUrl}/class-exp`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
