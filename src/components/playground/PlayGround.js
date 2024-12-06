@@ -231,13 +231,13 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 							) : null}
 						</div>
 						<p className="pg-programming-description">{t('playground.description3')}</p>
-						{/* <div className="pg-playground-box">
-								{languageExample ? (
-									<div className="row pg-playground-code">
-										<CodeSection code={languageExample} />
-									</div>
-								) : null}
-							</div> */}
+						<div className="pg-playground-box">
+							{languageExample ? (
+								<div className="row pg-playground-code">
+									<CodeSection code={languageExample} />
+								</div>
+							) : null}
+						</div> 
 					</div>
 				</div>
 			</div>

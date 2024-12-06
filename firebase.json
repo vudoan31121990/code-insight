@@ -13,7 +13,7 @@
         },
         {
           "source": "/api/**",
-          "destination": "https://code-insight-api-dot-code-insight-dev.uc.r.appspot.com/api/**"
+          "destination": "https://code-insight-api-dot-code-insight-dev.uc.r.appspot.com/api/"
         }
       ]
     }
