@@ -21,7 +21,7 @@ const playgroundsService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(`${baseUrl}/playgrounds`);
+				const response = await fetch(`${baseUrl}/api/playgrounds`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

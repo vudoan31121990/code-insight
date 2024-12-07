@@ -18,7 +18,7 @@ const languagesService = () => {
 		return async (dispatch) => {
 			try {
 				dispatch({ type: GET_LANGUAGE_LOADING });
-				const response = await fetch(`${baseUrl}/languages`);
+				const response = await fetch(`${baseUrl}/api/languages`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

@@ -21,7 +21,7 @@ const classExpService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(`${baseUrl}/class-exp`);
+				const response = await fetch(`${baseUrl}/api/class-exp`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

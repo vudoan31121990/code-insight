@@ -21,7 +21,7 @@ const classSnippetService = () => {
 	} else {
 		return async (dispatch) => {
 			try {
-				const response = await fetch(`${baseUrl}/class-code`);
+				const response = await fetch(`${baseUrl}/api/class-code`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

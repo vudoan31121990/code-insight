@@ -11,9 +11,6 @@
 				"source": "/api/**",
 				"destination": "https://code-insight-api-dot-code-insight-dev.uc.r.appspot.com/api/"
 			}
-		],
-		"env": {
-			"REACT_APP_BASE_URL": "https://code-insight-api-dot-code-insight-dev.uc.r.appspot.com/api"
-		}
+		]
 	}
 }
