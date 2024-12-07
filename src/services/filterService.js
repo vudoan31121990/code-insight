@@ -18,7 +18,7 @@ const filtersService = () => {
 		return async (dispatch) => {
 			try {
 				dispatch({ type: GET_FILTERS_LOADING });
-				const response = await fetch(`${baseUrl}/filters`);
+				const response = await fetch(`${baseUrl}/api/filters`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

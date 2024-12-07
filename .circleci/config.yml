@@ -45,7 +45,9 @@ jobs:
       # Build the React app
       - run:
           name: Build React app
-          command: npm run build || exit 0 
+          command: |
+            npm run build || exit 0 
+            echo "REACT_APP_BASE_URL=${REACT_APP_BASE_URL}" >> .env
 
       - jira/notify:
           pipeline_id: << pipeline.id >>
