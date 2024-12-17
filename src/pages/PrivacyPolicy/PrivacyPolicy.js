@@ -3,7 +3,7 @@ import './privacy.scss';
 
 export const PrivacyPolicy = () => {
 	return (
-		<div className="privacy-section">
+		<div className="privacy-section pt-6">
 			<div className="container">
 				<div className="privacy-title">
 					<h2>Privacy Policy</h2>

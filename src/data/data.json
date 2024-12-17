@@ -14,10 +14,10 @@
         },
         {
             "filterName": "If-Else Conditional",
-            "filterDesc": "An if-Else conditional in programming languages is a control flow statement based on whether a condition is true or false."
+            "filterDesc": "An If-Else conditional in programming languages is a control flow statement based on whether a condition is true or false."
         },
         {
-            "filterName": "Switch Case Conditional",
+            "filterName": "Switch-Case Conditional",
             "filterDesc": "A switch-case conditional in programming languages is a control flow statement based on the value of a variable."
         },
         {

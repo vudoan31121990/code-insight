@@ -3,14 +3,14 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './carousel.scss';
 import PropTypes from 'prop-types';
-import { CardFilterButton } from '@src/components/card/Card';
+import { CardFilterButton } from '@src/components/card-v2/Card';
 
 export const CarouselFillter = ({ items, handleOnClick }) => {
 	const responsive = {
 		desktop: {
 			breakpoint: { max: 3000, min: 1024 },
-			items: 4,
-			slidesToSlide: 4 // optional, default to 1.
+			items: 3,
+			slidesToSlide: 2 // optional, default to 1.
 		},
 		tablet: {
 			breakpoint: { max: 1024, min: 464 },

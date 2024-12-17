@@ -6,7 +6,7 @@ import { BarLoader } from 'react-spinners';
 import './playground.scss';
 import { ServiceUnavailable } from '@src/components/service-unavailable/ServiceUnavailable';
 import { FilterLanguage } from '@src/components/filter-language/FilterLanguage';
-import { CodeSection } from '@src/components/code-section/CodeSection';
+import { CodeSection } from '@src/components/code-section-v2/CodeSection';
 import languagesService from '@src/services/languageService';
 import playgroundsService from '@src/services/playgroundService';
 import classSnippetService from '@src/services/classServices/classSnippetService';
@@ -199,30 +199,34 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	return (
 		<div id="playGroundArea" ref={scrollRef}>
 			<div className="text-center">
-				<div className="container pg-playground-section">
-					<div className="section-title">
-						<h2>{t('playground.title')}</h2>
+				<div className="flex flex-col">
+					<div className="flex-row container">
+						<h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-700">
+							{t('playground.title')}
+						</h2>
 						{isLoading ? <BarLoader /> : null}
 						{!isLoading && playgroundError != null && playgrounds.length === 0 ? (
 							<ServiceUnavailable />
 						) : null}
 						{!isLoading && playgrounds.length > 0 ? (
-							<p className="pg-programming-description">{programmingDescription}</p>
+							<p className="font-weight-500 text-left text-xl">{programmingDescription}</p>
 						) : null}
-						<p className="pg-programming-description">{t('playground.description1')}</p>
+						<p className="font-weight-500 text-left text-xl">{t('playground.description1')}</p>
 					</div>
-					<div className="row">
-						<p className="pg-programming-description">{t('playground.description2')}</p>
+					<div className="flex-row container">
+						<p className="font-weight-500 text-left text-xl">{t('playground.description2')}</p>
 						<div className="pg-playground-box">
-							<div className="row pg-dropdown-language">
-								<div className="col-6 col-sm-2">
+							<div className="flex flex-row pt-3 pl-4">
+								<div className="flex-col pt-2 text-white">
 									<p>{t('codeSnippet.title')}</p>
 								</div>
-								<FilterLanguage
-									selectedLanguage={selectedLanguage}
-									programmingLanguages={languages}
-									handleLanguageClick={handleLanguageClick}
-								/>
+								<div className="flex-col pl-4">
+									<FilterLanguage
+										selectedLanguage={selectedLanguage}
+										programmingLanguages={languages}
+										handleLanguageClick={handleLanguageClick}
+									/>
+								</div>
 							</div>
 							{filterCodeSnippet ? (
 								<div className="row pg-playground-code">
@@ -230,14 +234,14 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 								</div>
 							) : null}
 						</div>
-						<p className="pg-programming-description">{t('playground.description3')}</p>
+						<p className="font-weight-500 text-left text-xl">{t('playground.description3')}</p>
 						<div className="pg-playground-box">
 							{languageExample ? (
 								<div className="row pg-playground-code">
 									<CodeSection code={languageExample} />
 								</div>
 							) : null}
-						</div> 
+						</div>
 					</div>
 				</div>
 			</div>

@@ -14,7 +14,6 @@ export const About = () => {
 							<p className="ab-description">{t('about.description1')}</p>
 							<p className="ab-description">{t('about.description2')}</p>
 							<p className="ab-description">{t('about.description3')}</p>
-							<p className="ab-description">{t('about.description4')}</p>
 						</div>
 					</div>
 					<div className="col-md-3">
