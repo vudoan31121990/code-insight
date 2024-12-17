@@ -3,7 +3,7 @@ import './terms-of-use.scss';
 
 export const TermsOfUse = () => {
 	return (
-		<div className="terms-section">
+		<div className="terms-section pt-6">
 			<div className="container">
 				<div className="terms-title">
 					<h2>Terms of Use</h2>

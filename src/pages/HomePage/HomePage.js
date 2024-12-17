@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Header } from '@src/components/header/Header';
+import { About } from '@src/components/about-v2/About';
 import { Filter } from '@src/components/filter/Filter';
 import { PlayGround } from '@src/components/playground/PlayGround';
-import { About } from '@src/components/about/About';
-import { Navigation } from '@src/components/navigation/Navigation';
 
 export const HomePage = () => {
 	const [filter, setFilter] = useState('');
@@ -24,8 +22,6 @@ export const HomePage = () => {
 
 	return (
 		<div>
-			<Navigation />
-			<Header />
 			<Filter onClick={handleFilterChange} scrollToId={scrollToId} />
 			{filter !== '' ? <PlayGround filter={filter} scrollPosition={scrollPosition} /> : null}
 			<About />

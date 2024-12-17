@@ -5,6 +5,6 @@
         }
     },
     "MOCK_SERVICES_DATA": {
-        "ENABLED": false
+        "ENABLED": true
     }    
 }
