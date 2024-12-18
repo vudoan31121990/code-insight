@@ -7,7 +7,7 @@ export const TermsOfUse = () => {
 			<div className="container">
 				<div className="terms-title">
 					<h2>Terms of Use</h2>
-					<p>Last Updated: April 2024</p>
+					<p>Last Updated: December 2024</p>
 				</div>
 				<div className="row">
 					<h3>
@@ -75,20 +75,7 @@ export const TermsOfUse = () => {
 					<h3>
 						<u>Collecting and Using Your Personal Data</u>
 					</h3>
-					<h4>1. Personal Data</h4>
-					<p>
-						While using Our Service, We may ask You to provide Us with certain
-						personally identifiable information that can be used to contact or identify
-						You. Personally identifiable information may include, but is not limited to:
-					</p>
-					<ul>
-						<li>Email address</li>
-						<li>First name and last name</li>
-						<li>Phone number</li>
-						<li>Address, State, Province, ZIP/Postal code, City</li>
-						<li>Usage Data</li>
-					</ul>
-					<h4>2. Usage Data</h4>
+					<h4>1. Usage Data</h4>
 					<p>Usage Data is collected automatically when using the Service.</p>
 					<p>
 						Usage Data may include information such as Your Device's Internet Protocol
@@ -108,31 +95,7 @@ export const TermsOfUse = () => {
 						We may also collect information that Your browser sends whenever You visit
 						our Service or when You access the Service by or through a mobile device.
 					</p>
-					<h4>Information from Third-Party Social Media Services</h4>
-					<p>
-						The Company allows You to create an account and log in to use the Service
-						through the following Third-party Social Media Services:
-					</p>
-					<ul>
-						<li>Google</li>
-						<li>Facebook</li>
-						<li>Twitter</li>
-					</ul>
-					<p>
-						If You decide to register through or otherwise grant us access to a
-						Third-Party Social Media Service, We may collect Personal data that is
-						already associated with Your Third-Party Social Media Service's account,
-						such as Your name, Your email address, Your activities or Your contact list
-						associated with that account.
-					</p>
-					<p>
-						You may also have the option of sharing additional information with the
-						Company through Your Third-Party Social Media Service's account. If You
-						choose to provide such information and Personal Data, during registration or
-						otherwise, You are giving the Company permission to use, share, and store it
-						in a manner consistent with this Privacy Policy.
-					</p>
-					<h4>3. Tracking Technologies and Cookies</h4>
+					<h4>2. Tracking Technologies and Cookies</h4>
 					<p>
 						We use Cookies and similar tracking technologies to track the activity on
 						Our Service and store certain information. Tracking technologies used are
