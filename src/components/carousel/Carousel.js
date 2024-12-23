@@ -25,32 +25,34 @@ export const CarouselFillter = ({ items, handleOnClick }) => {
 	};
 
 	return (
-		<Carousel
-			swipeable={false}
-			draggable={true}
-			showDots={true}
-			arrows={false}
-			responsive={responsive}
-			ssr={true} // means to render carousel on server-side.
-			infinite={true}
-			autoPlaySpeed={1000}
-			keyBoardControl={true}
-			customTransition="all .5"
-			transitionDuration={500}
-			containerClass="carousel-container"
-			removeArrowOnDeviceType={['tablet', 'mobile']}
-			dotListClass="custom-dot-list-style"
-			itemClass="carousel-item-padding-40-px"
-		>
-			{items.map((d, i) => (
-				<CardFilterButton
-					key={`${d.filterName}-${i}`}
-					title={d.filterName}
-					subtitle={d.filterDesc}
-					onClick={handleOnClick}
-				/>
-			))}
-		</Carousel>
+		<div data-testid="carousel">
+			<Carousel
+				swipeable={false}
+				draggable={true}
+				showDots={true}
+				arrows={false}
+				responsive={responsive}
+				ssr={true} // means to render carousel on server-side.
+				infinite={true}
+				autoPlaySpeed={1000}
+				keyBoardControl={true}
+				customTransition="all .5"
+				transitionDuration={500}
+				containerClass="carousel-container"
+				removeArrowOnDeviceType={['tablet', 'mobile']}
+				dotListClass="custom-dot-list-style"
+				itemClass="carousel-item-padding-40-px"
+			>
+				{items.map((d, i) => (
+					<CardFilterButton
+						key={`${d.filterName}-${i}`}
+						title={d.filterName}
+						subtitle={d.filterDesc}
+						onClick={handleOnClick}
+					/>
+				))}
+			</Carousel>
+		</div>
 	);
 };
 

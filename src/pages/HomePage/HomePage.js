@@ -21,7 +21,7 @@ export const HomePage = () => {
 	};
 
 	return (
-		<div>
+		<div data-testid="home-page">
 			<Filter onClick={handleFilterChange} scrollToId={scrollToId} />
 			{filter !== '' ? <PlayGround filter={filter} scrollPosition={scrollPosition} /> : null}
 			<About />

@@ -12,7 +12,7 @@ export const CodeSection = ({ code }) => {
 	const formatCode = `${code.replace(/\\n/g, '\n').replace(/\\t/g, '\t')}`;
 
 	return (
-		<div className="flex flex-row pr-0 relative">
+		<div data-testid="code-section" className="flex flex-row pr-0 relative">
 			<div className="flex-[9] p-2 overflow-auto">
 				<pre className="text-white sm:text-sm">
 					<code>{formatCode}</code>
@@ -20,7 +20,9 @@ export const CodeSection = ({ code }) => {
 			</div>
 			<div className="flex-[1] text-center text-white">
 				<CopyToClipboard text={formatCode} onCopy={() => setCopied(true)}>
-					<button className="bg-blue-500 px-3 py-1 rounded shadow-md hover:bg-blue-600 transition">{copied ? 'Copied!' : 'Copy'}</button>
+					<button className="bg-blue-500 px-3 py-1 rounded shadow-md hover:bg-blue-600 transition">
+						{copied ? 'Copied!' : 'Copy'}
+					</button>
 				</CopyToClipboard>
 			</div>
 		</div>

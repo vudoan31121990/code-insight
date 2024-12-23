@@ -4,34 +4,34 @@ import PropTypes from 'prop-types';
 import { BeatLoader } from 'react-spinners';
 import { useTranslation } from 'react-i18next';
 import './filter.scss';
-import filtersService from '@src/services/filterService';
+import filterService from '@src/services/filterService';
 import 'react-awesome-button/dist/styles.css';
 import { ServiceUnavailable } from '@src/components/service-unavailable/ServiceUnavailable';
 import { CarouselFillter } from '@src/components/carousel/Carousel';
 
 export const Filter = ({ onClick, scrollToId }) => {
 	const { t } = useTranslation();
-	const [filterActivated, setFilterActivated] = useState(false);
-	const [buttonChosen, setButtonChosen] = useState('');
-	const [buttonType, setButtonType] = useState('primary');
+	// const [filterActivated, setFilterActivated] = useState(false);
+	// const [buttonChosen, setButtonChosen] = useState('');
+	// const [buttonType, setButtonType] = useState('primary');
 
 	const dispatch = useDispatch();
 	const { filters, isLoading, error } = useSelector((state) => state.filters);
 
 	useEffect(() => {
-		dispatch(filtersService());
+		dispatch(filterService());
 	}, [dispatch]);
 
 	const handleOnClick = (event) => {
 		onClick(event);
 		scrollToId();
-		setButtonChosen(event);
-		setFilterActivated(true);
-		setButtonType('secondary');
+		// setButtonChosen(event);
+		// setFilterActivated(true);
+		// setButtonType('secondary');
 	};
 
 	return (
-		<div>
+		<div data-testid="filter">
 			<div className="relative isolate px-6 lg:px-8">
 				<div
 					aria-hidden="true"

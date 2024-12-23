@@ -7,8 +7,8 @@ import './playground.scss';
 import { ServiceUnavailable } from '@src/components/service-unavailable/ServiceUnavailable';
 import { FilterLanguage } from '@src/components/filter-language/FilterLanguage';
 import { CodeSection } from '@src/components/code-section-v2/CodeSection';
-import languagesService from '@src/services/languageService';
-import playgroundsService from '@src/services/playgroundService';
+import languageService from '@src/services/languageService';
+import playgroundService from '@src/services/playgroundService';
 import classSnippetService from '@src/services/classServices/classSnippetService';
 import classExpService from '@src/services/classServices/classExpService';
 import functionSnippetService from '@src/services/functionServices/functionSnippetService';
@@ -56,8 +56,8 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	 * Handle fetching all data when the component is mounted.
 	 */
 	useEffect(() => {
-		dispatch(languagesService());
-		dispatch(playgroundsService());
+		dispatch(languageService());
+		dispatch(playgroundService());
 	}, [dispatch]);
 
 	/**
@@ -197,7 +197,7 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 	};
 
 	return (
-		<div id="playGroundArea" ref={scrollRef}>
+		<div data-testid="playground" id="playGroundArea" ref={scrollRef}>
 			<div className="text-center">
 				<div className="flex flex-col">
 					<div className="flex-row container">
@@ -209,12 +209,18 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 							<ServiceUnavailable />
 						) : null}
 						{!isLoading && playgrounds.length > 0 ? (
-							<p className="font-weight-500 text-left text-xl">{programmingDescription}</p>
+							<p className="font-weight-500 text-left text-xl">
+								{programmingDescription}
+							</p>
 						) : null}
-						<p className="font-weight-500 text-left text-xl">{t('playground.description1')}</p>
+						<p className="font-weight-500 text-left text-xl">
+							{t('playground.description1')}
+						</p>
 					</div>
 					<div className="flex-row container">
-						<p className="font-weight-500 text-left text-xl">{t('playground.description2')}</p>
+						<p className="font-weight-500 text-left text-xl">
+							{t('playground.description2')}
+						</p>
 						<div className="pg-playground-box">
 							<div className="flex flex-row pt-3 pl-4">
 								<div className="flex-col pt-2 text-white">
@@ -234,7 +240,9 @@ export const PlayGround = ({ filter, scrollPosition }) => {
 								</div>
 							) : null}
 						</div>
-						<p className="font-weight-500 text-left text-xl">{t('playground.description3')}</p>
+						<p className="font-weight-500 text-left text-xl">
+							{t('playground.description3')}
+						</p>
 						<div className="pg-playground-box">
 							{languageExample ? (
 								<div className="row pg-playground-code">

@@ -10,7 +10,10 @@ export const CardFilterButton = ({ title, subtitle, onClick }) => {
 	};
 
 	return (
-		<div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-400 mr-4 h-full w-70">
+		<div
+			data-testid="card"
+			className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-400 mr-4 h-full w-70"
+		>
 			<div className="text-blue-500 pt-3">
 				<p className="uppercase md:text-lg font-semibold sm:text-sm">{title}</p>
 			</div>

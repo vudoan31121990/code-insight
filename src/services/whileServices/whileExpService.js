@@ -7,30 +7,29 @@ import config from '@src/configmap/config.json';
 import { whileLoopCodeExpData } from '@src/data/whileLoopData/whileCodeSnippetExample';
 
 const mockData = config.MOCK_SERVICES_DATA.ENABLED;
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const whileExpService = () => {
-	if (mockData) {
-		return (dispatch) => {
-			setTimeout(() => {
-				dispatch({ type: GET_WHILE_EXP_LOADING });
-				const data = whileLoopCodeExpData;
-				dispatch({ type: GET_WHILE_EXP_SUCCESS, payload: data });
-			}, 2000);
-		};
-	} else {
-		return async (dispatch) => {
-			try {
-				const response = await fetch(process.env.REACT_APP_WHILE_EXP_API);
+	return async (dispatch) => {
+		dispatch({ type: GET_WHILE_EXP_LOADING });
+		try {
+			if (mockData) {
+				setTimeout(() => {
+					const data = whileLoopCodeExpData;
+					dispatch({ type: GET_WHILE_EXP_SUCCESS, payload: data });
+				}, 2000);
+			} else {
+				const response = await fetch(`${baseUrl}/api/while-exp`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
 				const data = await response.json();
 				dispatch({ type: GET_WHILE_EXP_SUCCESS, payload: data });
-			} catch (error) {
-				dispatch({ type: GET_WHILE_EXP_FAILURE, payload: error });
 			}
-		};
-	}
+		} catch (error) {
+			dispatch({ type: GET_WHILE_EXP_FAILURE, payload: error });
+		}
+	};
 };
 
 export default whileExpService;

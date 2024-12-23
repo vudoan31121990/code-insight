@@ -10,28 +10,27 @@ const mockData = config.MOCK_SERVICES_DATA.ENABLED;
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const classSnippetService = () => {
-	if (mockData) {
-		return (dispatch) => {
-			setTimeout(() => {
-				dispatch({ type: GET_CLASS_SNIPPET_LOADING });
-				const data = classCodeSnippetData;
-				dispatch({ type: GET_CLASS_SNIPPET_SUCCESS, payload: data });
-			}, 2000);
-		};
-	} else {
-		return async (dispatch) => {
-			try {
+	return async (dispatch) => {
+		dispatch({ type: GET_CLASS_SNIPPET_LOADING });
+
+		try {
+			if (mockData) {
+				setTimeout(() => {
+					const data = classCodeSnippetData;
+					dispatch({ type: GET_CLASS_SNIPPET_SUCCESS, payload: data });
+				}, 2000);
+			} else {
 				const response = await fetch(`${baseUrl}/api/class-code`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
 				const responseJson = await response.json();
 				dispatch({ type: GET_CLASS_SNIPPET_SUCCESS, payload: responseJson.data });
-			} catch (error) {
-				dispatch({ type: GET_CLASS_SNIPPET_FAILURE, payload: error });
 			}
-		};
-	}
+		} catch (error) {
+			dispatch({ type: GET_CLASS_SNIPPET_FAILURE, payload: error });
+		}
+	};
 };
 
 export default classSnippetService;

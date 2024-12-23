@@ -35,12 +35,12 @@
             "playgroundDesc": "A Class is a fundamental concept in object-oriented programming (OOP). It serves as a blueprint or template for creating objects. A class encapsulates data for the object (attributes or properties) and functions (methods) that operate on the data."
         },
         {
-            "playgroundId": "Function",
-            "playgroundDesc": "A function is a self-contained block of code that performs a specific task."
+            "playgroundId": "For Loop",
+            "playgroundDesc": "A for loop in programming languages is a control flow statement used to repeatedly execute a block of code a certain number of times or over a sequence of values."
         },
         {
-            "playgroundId": "Variable",
-            "playgroundDesc": "A variable is a named storage location used to hold data that can change during the execution of a program."
+            "playgroundId": "Function",
+            "playgroundDesc": "A function is a self-contained block of code that performs a specific task."
         },
         {
             "playgroundId": "If-Else Conditional",
@@ -51,12 +51,12 @@
             "playgroundDesc": "A switch-case conditional in programming languages is a control flow statement that allows a variable to be tested against a list of values, each with an associated block of code to execute."
         },
         {
-            "playgroundId": "For Loop",
-            "playgroundDesc": "A for loop in programming languages is a control flow statement used to repeatedly execute a block of code a certain number of times or over a sequence of values."
+            "playgroundId": "Variable",
+            "playgroundDesc": "A variable is a named storage location used to hold data that can change during the execution of a program."
         },
         {
             "playgroundId": "While Loop",
-            "playgroundDesc": "A while loop in programming languages is is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition"
+            "playgroundDesc": "A while loop in programming languages is is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition."
         }
     ],
     "Languages": [
