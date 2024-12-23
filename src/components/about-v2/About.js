@@ -4,7 +4,10 @@ import { useTranslation } from 'react-i18next';
 export const About = () => {
 	const { t } = useTranslation();
 	return (
-		<div className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-16">
+		<div
+			data-testid="about"
+			className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-16"
+		>
 			<div
 				aria-hidden="true"
 				className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"

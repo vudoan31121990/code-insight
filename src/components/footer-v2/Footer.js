@@ -7,7 +7,7 @@ export const Footer = () => {
 	const { t } = useTranslation();
 
 	return (
-		<footer className="py-4">
+		<footer data-testid="footer" className="py-4">
 			<div className="container mx-auto text-center">
 				<div className="flex space-x-4 mb-2 justify-center">
 					<a
