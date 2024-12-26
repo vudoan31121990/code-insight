@@ -8,5 +8,18 @@ module.exports = {
 	},
 	transform: {
 		'^.+\\.(js|jsx|ts|tsx)$': 'babel-jest' // Transpile JavaScript/TypeScript
-	}
+	},
+	collectCoverage: true,
+	coverageDirectory: "coverage",
+	coverageReporters: ["lcov", "html"],
+	coveragePathIgnorePatterns: [
+		"/node_modules/",
+		"/src/assets/",
+		"/build/",
+		"/coverage/",
+		"/public/",
+		"/src/data",
+		"/src/redux/",
+		"/src/utils/"
+	],
 };
