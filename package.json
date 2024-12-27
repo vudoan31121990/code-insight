@@ -35,6 +35,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
     "scss": "^0.2.4",
+    "sonar-scanner": "^3.1.0",
     "sonarqube-scanner": "^4.2.6",
     "tailwindcss": "^3.4.16",
     "web-vitals": "^2.1.4"
@@ -43,7 +44,8 @@
     "start": "export NODE_ENV=development && react-app-rewired start --config webpack.config.js",
     "start:staging": "node node-staging.js",
     "build": "react-app-rewired build",
-    "test:coverage": "jest --coverage --passWithNoTests",
+    "test": "jest --passWithNoTests --watchAll=false",
+    "test:coverage": "jest --coverage --passWithNoTests --watchAll=false",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.scss\""
   },

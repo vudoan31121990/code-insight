@@ -11,7 +11,7 @@ module.exports = {
 	},
 	collectCoverage: true,
 	coverageDirectory: "coverage",
-	coverageReporters: ["lcov", "html"],
+	coverageReporters: ["lcov", "text"],
 	coveragePathIgnorePatterns: [
 		"/node_modules/",
 		"/src/assets/",
@@ -22,4 +22,12 @@ module.exports = {
 		"/src/redux/",
 		"/src/utils/"
 	],
+	coverageThreshold: {
+		global: {
+		  branches: 80,
+		  functions: 80,
+		  lines: 80,
+		  statements: 80,
+		},
+	},
 };
