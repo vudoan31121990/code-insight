@@ -123,15 +123,11 @@ jobs:
           name: Run tests with coverage
           command: npm run test:coverage || echo "Job failed, but skipping job when failed." && exit 0
 
-      # Run Sonar Analysis
-      - run:
-          name: Run Sonar Analysis
-          command: sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN} || echo "job failed, but skipping job when failed." && exit 0
-
       - run:
           name: Write Sonar Analysis Link
           command: |
             echo "Sonar Analysis results at: ${SONAR_HOST_URL}/dashboard?id=${SONAR_PROJECT_KEY}" > ~/repo/sonar_link.txt
+            echo "Check in Artiface of CircleCI after build is complete for the link of the Sonar Analysis."
 
       - store_artifacts:
           path: ~/repo/sonar_link.txt
