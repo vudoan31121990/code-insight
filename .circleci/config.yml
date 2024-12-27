@@ -9,6 +9,11 @@ executors:
       - image: cimg/node:23.1.0
     working_directory: ~/repo
 
+  sonar-executor:
+    docker:
+      - image: sonarsource/sonar-scanner-cli:latest
+    working_directory: ~/repo
+
 jobs:
   build_app:
     executor: docker-executor
@@ -88,7 +93,7 @@ jobs:
           pipeline_number: << pipeline.number >>      
 
   sonar_analysis:
-    executor: docker-executor
+    executor: sonar-executor
 
     environment:
       JOB_TYPE: "sonar"
@@ -117,10 +122,6 @@ jobs:
       - run:
           name: Run tests with coverage
           command: npm run test:coverage || echo "Tests failed, but skipping job when failed." && exit 0
-
-      - run:
-          name: Fix permissions for sonar-scanner
-          command: chmod +x ./node_modules/sonar-scanner/bin/sonar-scanner
 
       - run:
           name: Run sonar analysis
