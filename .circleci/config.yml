@@ -116,7 +116,7 @@ jobs:
        # Run Jest to generate the coverage report
       - run:
           name: Run tests with coverage
-          command: npm test -- --coverage
+          command: npm run test:coverage
       # Verify the lcov.info file exists
       - run:
           name: Verify coverage report
