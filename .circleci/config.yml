@@ -126,8 +126,8 @@ jobs:
       - run:
           name: Check Sonar Analysis
           command: |
-            echo "Sonar Analysis results at: {SONAR_HOST_URL}/dashboard?id=${SONAR_PROJECT_KEY}"
-            >> $CIRCLE_WORKING_DIRECTORY/sonar_link.txt
+            echo "Sonar Analysis results at: ${SONAR_HOST_URL}/dashboard?id=${SONAR_PROJECT_KEY}"
+            > sonar_link.txt
 
       - store_artifacts:
           path: sonar_link.txt
