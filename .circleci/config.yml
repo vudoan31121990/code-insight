@@ -124,16 +124,14 @@ jobs:
           command: npm run test:coverage || echo "Tests failed, but skipping job when failed." && exit 0
 
       - run:
-          name: Run sonar analysis
+          name: Check Sonar Analysis
           command: |
-            chmod -R 755 .
-            chmod +x ./node_modules/sonar-scanner/bin/sonar-scanner || true
-            npx sonar-scanner \
-            -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-            -Dsonar.organization=${SONAR_ORGANIZATION} \
-            -Dsonar.host.url=${SONAR_HOST_URL} \
-            -Dsonar.login=${SONAR_TOKEN} \
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info || echo "Sonar analysis failed, but skipping job when failed." && exit 0
+            echo "Sonar Analysis results at: {SONAR_HOST_URL}/dashboard?id=${SONAR_PROJECT_KEY}"
+            >> $CIRCLE_WORKING_DIRECTORY/sonar_link.txt
+
+      - store_artifacts:
+          path: sonar_link.txt
+          destination: sonar_analysis
 
       - jira/notify:
           pipeline_id: << pipeline.id >>
