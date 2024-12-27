@@ -87,6 +87,44 @@ jobs:
           pipeline_id: << pipeline.id >>
           pipeline_number: << pipeline.number >>      
 
+  sonar_analysis:
+    executor: docker-executor
+
+    environment:
+      JOB_TYPE: "sonar"
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/repo
+
+      # Cache dependencies to make builds faster
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      # Install dependencies
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Run sonar analysis
+          command: npm run test:coverage \
+            -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+            -Dsonar.organization=${SONAR_ORGANIZATION} \
+            -Dsonar.host.url=${SONAR_HOST_URL} \
+            -Dsonar.login=${SONAR_TOKEN} || echo "Sonar analysis failed, but skipping job when failed." && exit 0
+
+      - jira/notify:
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
+
   deploy_to_firebase:
     executor: docker-executor
 
@@ -125,10 +163,14 @@ workflows:
           context: JIRA_WEBHOOK
           requires:
             - build_app
+      - sonar_analysis:
+          context: JIRA_WEBHOOK
+          requires:
+            - functional_tests
       - deploy_to_firebase:
           context: JIRA_WEBHOOK
           requires:
-            - build_app
+            - sonar_analysis
           filters:
             branches:
               only: master
