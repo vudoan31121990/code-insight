@@ -116,7 +116,7 @@ jobs:
       # Install dependencies
       - run:
           name: Install dependencies
-          command: npm install && sudo npm install -g -f sonar-scanner
+          command: npm install
 
        # Run Jest to generate the coverage report
       - run:
