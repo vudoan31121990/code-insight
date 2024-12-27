@@ -126,11 +126,16 @@ jobs:
       - run:
           name: Check Sonar Analysis
           command: |
-            echo "Sonar Analysis results at: ${SONAR_HOST_URL}/dashboard?id=${SONAR_PROJECT_KEY}"
-            > sonar_link.txt
+            echo "Sonar Analysis results at: ${SONAR_HOST_URL}/dashboard?id=${SONAR_PROJECT_KEY}" > ~/repo/sonar_link.txt
+
+      # Verify contents of the sonar_link.txt file
+      - run:
+          name: Verify sonar_link.txt contents
+          command: |
+            cat ~/repo/sonar_link.txt
 
       - store_artifacts:
-          path: sonar_link.txt
+          path: ~/repo/sonar_link.txt
           destination: sonar_analysis
 
       - jira/notify:
