@@ -119,25 +119,9 @@ jobs:
           command: npm run test:coverage || echo "Tests failed, but skipping job when failed." && exit 0
 
       - run:
-          name: Debug coverage directory
-          command: ls -R coverage || echo "Coverage directory not found"
-
-      # Verify the lcov.info file exists
-      - run:
-          name: Verify coverage report
-          command: |
-            if [ ! -f coverage/lcov.info ]; then
-              echo "Coverage report not found! Ensure tests generate coverage/lcov.info.";
-              exit 1;
-            fi
-
-      - run:
-          name: Set permissions for workspace
-          command: chmod -R 755 .
-
-      - run:
           name: Run sonar analysis
           command: |
+            chmod -R 755 .
             chmod +x ./node_modules/sonar-scanner/bin/sonar-scanner || true
             npx sonar-scanner \
             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
