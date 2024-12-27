@@ -44,6 +44,7 @@
     "start": "export NODE_ENV=development && react-app-rewired start --config webpack.config.js",
     "start:staging": "node node-staging.js",
     "build": "react-app-rewired build",
+    "test": "jest --passWithNoTests --watchAll=false",
     "test:coverage": "jest --coverage --passWithNoTests --watchAll=false",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.scss\""
