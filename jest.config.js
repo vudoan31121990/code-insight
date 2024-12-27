@@ -11,7 +11,7 @@ module.exports = {
 	},
 	collectCoverage: true,
 	coverageDirectory: "coverage",
-	coverageReporters: ["lcov", "html"],
+	coverageReporters: ["lcov", "text"],
 	coveragePathIgnorePatterns: [
 		"/node_modules/",
 		"/src/assets/",
